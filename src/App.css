@@ -39,11 +39,13 @@
 .css-cveggr-MuiListItemIcon-root {
   margin-left: 16px !important;
 }
-.css-jzk4qw-MuiPaper-root-MuiAppBar-root {
+.css-jzk4qw-MuiPaper-root-MuiAppBar-root,
+.css-1mqm3n0 {
   background: transparent !important;
   box-shadow: none !important;
 }
-.css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
+.css-12i7wg6-MuiPaper-root-MuiDrawer-paper,
+.css-1l8j5k8 {
   background: #ffffff;
   box-shadow: 0px 10px 60px rgba(226, 236, 249, 0.5);
   border: none !important;
