@@ -125,7 +125,6 @@ export default function PersistentDrawerLeft() {
             )}
           </IconButton>
         </DrawerHeader>
-        {/* <Divider /> */}
         <div className="">
           <img src={logo}></img>
           <img src={logoText}></img>
