@@ -50,3 +50,19 @@
   box-shadow: 0px 10px 60px rgba(226, 236, 249, 0.5);
   border: none !important;
 }
+@media (max-width: 768px) {
+  .css-1f2xuhi-MuiDrawer-docked {
+    position: absolute;
+  }
+  .css-1k455el {
+    display: flex !important;
+  }
+}
+@media (min-width: 769px) {
+  .css-1k455el {
+    display: none !important;
+  }
+}
+.css-hvca0x-MuiGrid-root > .MuiGrid-item {
+  padding-left: 10px !important;
+}
