@@ -18,12 +18,13 @@ import DirectBox from "../../assets/directbox-notif.png";
 import PictureFrame from "../../assets/picture-frame.png";
 import Layers from "../../assets/layer.png";
 import Routing from "../../assets/routing.png";
+import ATMCard from "../../assets/Card.png";
 const Dashboard = () => {
   return (
     <div className="container dashboard-container ">
       <h1 className="dashboard-heading">Your Profile Data and Edit</h1>
       <Grid container>
-        <Grid item xs={8}>
+        <Grid item xs={7}>
           <Box
             className="container-profile"
             sx={{
@@ -456,6 +457,7 @@ const Dashboard = () => {
             sx={{
               p: 2,
               mt: 5,
+              mb: 5,
               bgcolor: (theme) =>
                 theme.palette.mode === "dark" ? "#101010" : "grey.50",
               color: (theme) =>
@@ -799,11 +801,13 @@ const Dashboard = () => {
             </Grid>
           </Box>
         </Grid>
-        {/* <Grid item xs={4} className="d-flex mx-auto my-auto">
+        {/* right side */}
+        <Grid item xs={5}>
           <Box
-            className="container-card"
+            className="container-profile"
             sx={{
               p: 2,
+              mb: 5,
               bgcolor: (theme) =>
                 theme.palette.mode === "dark" ? "#101010" : "grey.50",
               color: (theme) =>
@@ -816,21 +820,196 @@ const Dashboard = () => {
               fontWeight: "700",
             }}
           >
-            <div className="row">
-              <div className="col">
-                <span className="title">Account Information</span>
-              </div>
-            </div>
-            <Grid container>
+            <Grid
+              container
+              spacing={3}
+              sx={{ display: "flex", justifyContent: "space-between" }}
+            >
               <Grid item xs={6}>
-                <Avatar />
+                <Grid container>
+                  <Grid item xs={10}>
+                    <Grid container>
+                      <Grid
+                        item
+                        xs={12}
+                        sx={{
+                          display: "flex",
+                          justifyContent: "start",
+                          alignItems: "center",
+                        }}
+                      >
+                        <span className="title">Bank Account</span>
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                </Grid>
               </Grid>
-              <Grid item xs={6}>
-                <span className="title">Saleh Muhammad</span>
+              <Grid
+                item
+                xs={4}
+                sx={{
+                  display: "flex",
+                  justifyContent: "end",
+                  alignItems: "center",
+                  mr: 3,
+                }}
+              >
+                <span className="change-password">Edit Data</span>
+              </Grid>
+            </Grid>
+
+            <Grid container spacing={1} sx={{ mt: 5 }}>
+              <Grid item xs={4}>
+                <img src={ATMCard} />
+              </Grid>
+              <Grid item xs={8}>
+                <Grid container sx={{ ml: 1 }}>
+                  <Grid
+                    item
+                    xs={12}
+                    sx={{
+                      display: "flex",
+                      justifyContent: "start",
+                      alignItems: "start",
+                    }}
+                  >
+                    <span className="userSubTitle">IBAN</span>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    sx={{
+                      display: "flex",
+                      justifyContent: "start",
+                      alignItems: "start",
+                    }}
+                  >
+                    <span className="userTitle">SA0380000203608016117728</span>
+                  </Grid>
+                </Grid>
+                <Grid container sx={{ ml: 1 }}>
+                  <Grid
+                    item
+                    xs={6}
+                    sx={{
+                      display: "flex",
+                      justifyContent: "start",
+                      alignItems: "center",
+                    }}
+                  >
+                    <span className="userSubTitle">Clint name</span>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={6}
+                    sx={{
+                      display: "flex",
+                      justifyContent: "end",
+                      alignItems: "center",
+                    }}
+                  >
+                    <span className="userSubTitle">Bank name</span>
+                  </Grid>
+                </Grid>
+                <Grid container sx={{ ml: 1 }}>
+                  <Grid
+                    item
+                    xs={8}
+                    sx={{
+                      display: "flex",
+                      justifyContent: "start",
+                      alignItems: "center",
+                    }}
+                  >
+                    <span>AKRAM - - ELKALLAS</span>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={4}
+                    sx={{
+                      display: "flex",
+                      justifyContent: "end",
+                      alignItems: "center",
+                    }}
+                  >
+                    <span>ANB</span>
+                  </Grid>
+                </Grid>
               </Grid>
             </Grid>
           </Box>
-        </Grid> */}
+          <Box
+            className="container-profile"
+            sx={{
+              p: 2,
+              mb: 5,
+              bgcolor: (theme) =>
+                theme.palette.mode === "dark" ? "#101010" : "grey.50",
+              color: (theme) =>
+                theme.palette.mode === "dark" ? "grey.300" : "grey.800",
+              border: "1px solid",
+              borderColor: (theme) =>
+                theme.palette.mode === "dark" ? "grey.800" : "grey.300",
+              borderRadius: 2,
+              fontSize: "0.875rem",
+              fontWeight: "700",
+            }}
+          >
+            <Grid
+              container
+              spacing={1}
+              sx={{
+                mt: 1,
+              }}
+            >
+              <Grid
+                item
+                xs={12}
+                sx={{
+                  display: "flex",
+                  justifyContent: "start",
+                  alignItems: "start",
+                }}
+              >
+                <span className="userTitle">Investor Agreement</span>
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                sx={{
+                  display: "flex",
+                  justifyContent: "start",
+                  alignItems: "start",
+                }}
+              >
+                <span className="userSubTitle">
+                  (Opening an Investment Account)
+                </span>
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                sx={{
+                  display: "flex",
+                  justifyContent: "start",
+                  alignItems: "start",
+                }}
+              >
+                <p className="userTitle">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Egestas interdum mi nunc quam tellus sagittis non sagittis.
+                  Sit facilisis odio at elementum enim. Aenean posuere lectus
+                  commodo pretium cras ornare egestas. Faucibus pellentesque
+                  congue elit felis, laoreet tortor. Suspendisse ipsum enim
+                  mauris porta ipsum morbi duis fermentum eu. Mattis viverra
+                  blandit tellus lacus dignissim consequat consectetur mauris
+                  quis. Fermentum, iaculis nunc pellentesque viverra nunc et
+                  integer eget tortor.
+                </p>
+              </Grid>
+            </Grid>
+          </Box>
+        </Grid>
       </Grid>
     </div>
   );
