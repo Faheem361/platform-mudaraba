@@ -19,6 +19,7 @@ import PictureFrame from "../../assets/picture-frame.png";
 import Layers from "../../assets/layer.png";
 import Routing from "../../assets/routing.png";
 import ATMCard from "../../assets/Card.png";
+import Download from "../../assets/download.png";
 const Dashboard = () => {
   return (
     <div className="container dashboard-container ">
@@ -995,7 +996,7 @@ const Dashboard = () => {
                   alignItems: "start",
                 }}
               >
-                <p className="userTitle">
+                <p className="agreement-para">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Egestas interdum mi nunc quam tellus sagittis non sagittis.
                   Sit facilisis odio at elementum enim. Aenean posuere lectus
@@ -1004,8 +1005,33 @@ const Dashboard = () => {
                   mauris porta ipsum morbi duis fermentum eu. Mattis viverra
                   blandit tellus lacus dignissim consequat consectetur mauris
                   quis. Fermentum, iaculis nunc pellentesque viverra nunc et
-                  integer eget tortor.
+                  integer eget tortor. Neque, ultricies rutrum id cursus feugiat
+                  id. Arcu fringilla vitae sed in malesuada nec aliquam.
+                  Sagittis amet malesuada etiam gravida tellus quam mattis.
+                  Ullamcorper id metus enim, sed scelerisque viverra
+                  scelerisque. Vestibulum varius dolor sed eu, cursus laoreet.
+                  Arcu at enim at scelerisque a, scelerisque. Vel nulla eu lacus
+                  nunc imperdiet. Egestas risus vitae aliquam nam cursus aliquet
+                  duis. Duis arcu ornare eu feugiat nunc. Arcu enim consequat,
+                  dolor mus fermentum lobortis est. Commodo massa, odio dolor
+                  non id pretium montes, tristique
                 </p>
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                sx={{
+                  display: "flex",
+                  justifyContent: "start",
+                  alignItems: "start",
+                  mb: 2,
+                  mt: 1,
+                }}
+              >
+                <button className="download">
+                  <img src={Download} />
+                  Download
+                </button>
               </Grid>
             </Grid>
           </Box>
