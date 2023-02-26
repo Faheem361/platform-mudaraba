@@ -25,8 +25,9 @@ import StatusUp from "../../assets/status-up.png";
 import Settings from "../../assets/setting.png";
 import logoText from "../../assets/mudaraba-logotext.png";
 import logo from "../../assets/mudaraba-logo.png";
-import { makeStyles } from "@material-ui/core/styles";
+// import { makeStyles } from "@material-ui/core/styles";
 import { Button } from "@mui/material";
+import { Grid } from "@mui/material";
 const drawerWidth = 240;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
@@ -76,7 +77,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 export default function PersistentDrawerLeft({ children }) {
   const theme = useTheme();
-  const classes = useStyles();
+  const sx = makeStyles(theme);
   const [open, setOpen] = React.useState(true);
 
   const handleDrawerOpen = () => {
@@ -86,109 +87,168 @@ export default function PersistentDrawerLeft({ children }) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  // const classes = useStyles();
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Grid container>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{ mr: 2, ...(open && { display: "none" }) }}
+      <Grid container style={{ position: "absolute", top: 0, left: 20 }}>
+        <IconButton
+          color="inherit"
+          aria-label="open drawer"
+          onClick={handleDrawerOpen}
+          edge="start"
+          sx={{ mr: 2, ...(open && { display: "none" }) }}
+        >
+          <MenuIcon />
+        </IconButton>
+      </Grid>
+      <Grid container sx={sx.desktopDrawer}>
+        <Grid
+          item
+          style={{
+            width: open ? `${drawerWidth}px` : "0px",
+          }}
+        >
+          <Drawer
+            sx={{
+              width: open ? drawerWidth : "0px",
+              flexShrink: 0,
+              "& .MuiDrawer-paper": {
+                width: drawerWidth,
+                boxSizing: "border-box",
+              },
+            }}
+            variant="persistent"
+            anchor="left"
+            open={open}
           >
-            <MenuIcon />
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          "& .MuiDrawer-paper": {
-            width: drawerWidth,
-            boxSizing: "border-box",
-          },
-        }}
-        variant="persistent"
-        anchor="left"
-        open={open}
-      >
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "ltr" ? (
-              <ChevronLeftIcon />
-            ) : (
-              <ChevronRightIcon />
+            <DrawerHeader>
+              <IconButton onClick={handleDrawerClose}>
+                {theme.direction === "ltr" ? (
+                  <ChevronLeftIcon />
+                ) : (
+                  <ChevronRightIcon />
+                )}
+              </IconButton>
+            </DrawerHeader>
+            <div style={{ marginTop: "20px" }}>
+              <img src={logo}></img>
+              <img src={logoText}></img>
+            </div>
+            <List sx={sx.listItemsStyle}>
+              {["Dashboard", "My Investment", "Wallet", "Operations"].map(
+                (text, index) => (
+                  <ListItem key={text} disablePadding>
+                    <ListItemButton>
+                      <ListItemIcon>
+                        {/* {index === 0 ? <InboxIcon /> : <MailIcon />} */}
+                        {index == 0 && <img src={KeySquare} />}
+                        {index == 1 && <img src={MoneySend} />}
+                        {index == 2 && <img src={Walletmoney} />}
+                        {index == 3 && <img src={StatusUp} />}
+                      </ListItemIcon>
+                      <ListItemText primary={text} />
+                    </ListItemButton>
+                  </ListItem>
+                )
+              )}
+            </List>
+            <div className="d-flex">
+              <Button sx={sx.settingButton}>
+                <img src={Settings} style={sx.settingImg} />
+                <span>Settings</span>
+              </Button>
+            </div>
+          </Drawer>
+        </Grid>
+        <Grid
+          item
+          sx={{
+            width: open ? `calc(100% - ${drawerWidth}px)` : "100%",
+          }}
+        >
+          {children}
+        </Grid>
+      </Grid>
+
+      <Grid container sx={sx.mobileDrawer}>
+        <Drawer
+          sx={{
+            width: open ? drawerWidth : "0px",
+            flexShrink: 0,
+            "& .MuiDrawer-paper": {
+              width: drawerWidth,
+              boxSizing: "border-box",
+            },
+          }}
+          variant="persistent"
+          anchor="left"
+          open={open}
+        >
+          <DrawerHeader>
+            <IconButton onClick={handleDrawerClose}>
+              {theme.direction === "ltr" ? (
+                <ChevronLeftIcon />
+              ) : (
+                <ChevronRightIcon />
+              )}
+            </IconButton>
+          </DrawerHeader>
+          <div style={{ marginTop: "20px" }}>
+            <img src={logo}></img>
+            <img src={logoText}></img>
+          </div>
+          <List sx={sx.listItemsStyle}>
+            {["Dashboard", "My Investment", "Wallet", "Operations"].map(
+              (text, index) => (
+                <ListItem key={text} disablePadding>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      {/* {index === 0 ? <InboxIcon /> : <MailIcon />} */}
+                      {index == 0 && <img src={KeySquare} />}
+                      {index == 1 && <img src={MoneySend} />}
+                      {index == 2 && <img src={Walletmoney} />}
+                      {index == 3 && <img src={StatusUp} />}
+                    </ListItemIcon>
+                    <ListItemText primary={text} />
+                  </ListItemButton>
+                </ListItem>
+              )
             )}
-          </IconButton>
-        </DrawerHeader>
-        <div style={{ marginTop: "20px" }}>
-          <img src={logo}></img>
-          <img src={logoText}></img>
-        </div>
-        <List className={classes.listItemsStyle}>
-          {["Dashboard", "My Investment", "Wallet", "Operations"].map(
-            (text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    {/* {index === 0 ? <InboxIcon /> : <MailIcon />} */}
-                    {index == 0 && <img src={KeySquare} />}
-                    {index == 1 && <img src={MoneySend} />}
-                    {index == 2 && <img src={Walletmoney} />}
-                    {index == 3 && <img src={StatusUp} />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </ListItem>
-            )
-          )}
-        </List>
-        <div className="d-flex">
-          <Button className={classes.settingButton}>
-            <img src={Settings} className={classes.settingImg} />
-            <span>Settings</span>
-          </Button>
-        </div>
-      </Drawer>
-      {/* <Main open={open}>
-        <DrawerHeader />
-      </Main> */}
-      {children}
-    </Box>
+          </List>
+          <div className="d-flex">
+            <Button sx={sx.settingButton}>
+              <img src={Settings} style={sx.settingImg} />
+              <span>Settings</span>
+            </Button>
+          </div>
+        </Drawer>
+        {children}
+      </Grid>
+    </Grid>
   );
 }
-
-const useStyles = makeStyles({
+const makeStyles = (theme) => ({
+  mobileDrawer: {
+    display: "none",
+    [theme.breakpoints.down("md")]: {
+      display: "flex",
+    },
+  },
+  desktopDrawer: {
+    display: "flex",
+    [theme.breakpoints.down("md")]: {
+      display: "none",
+    },
+  },
   listItemsStyle: {
     fontFamily: "Source Sans Pro !important",
     fontStyle: "normal",
     fontWeight: "600 !important",
     fontSize: "19px !important",
     lineHeight: "24px !important",
-    /* identical to box height */
-
     letterSpacing: "-0.01em !important",
-
-    /* Gray\ Text */
-
-    color: "#9197B3",
-  },
-  "& .css-10hburv-MuiTypography-root": {
-    fontFamily: "Source Sans Pro",
-    fontStyle: "normal",
-    fontWeight: 600,
-    fontSize: "19px",
-    lineHeight: "24px",
-    /* identical to box height */
-
-    letterSpacing: "-0.01em",
-
-    /* Gray\ Text */
-
     color: "#9197B3",
   },
   settingButton: {
@@ -200,8 +260,5 @@ const useStyles = makeStyles({
   },
   settingImg: {
     marginRight: "5px",
-  },
-  "& .css-1k455el": {
-    display: "none",
   },
 });

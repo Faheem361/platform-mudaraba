@@ -56,7 +56,7 @@
 .userTitle {
   font-style: normal;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 29px;
   /* identical to box height */
 
@@ -91,9 +91,7 @@
   /* identical to box height */
 
   letter-spacing: -0.01em;
-
   /* Blue */
-
   color: #00b1ff;
 }
 .download {
@@ -111,7 +109,7 @@
 }
 .agreement-para {
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 22px;
   letter-spacing: -0.02em;
   color: #000000;

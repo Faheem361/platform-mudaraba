@@ -1,0 +1,19 @@
+.containerLogin {
+  background: #ffffff !important;
+  border-radius: 23px !important;
+}
+.css-i4bv87-MuiSvgIcon-root {
+  /* background: #b5b5b5;
+  color: #b5b5b5; */
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+}
+
+.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root {
+  color: #b5b5b5;
+  /* background-color: #b5b5b5 !important; */
+  width: 26px;
+  height: 26px;
+  border-radius: 7px !important;
+}

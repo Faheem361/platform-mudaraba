@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import "./dashboard.css";
 import { Avatar, Grid } from "@mui/material";
@@ -20,12 +20,22 @@ import Layers from "../../assets/layer.png";
 import Routing from "../../assets/routing.png";
 import ATMCard from "../../assets/Card.png";
 import Download from "../../assets/download.png";
+import { DataCard } from "./_";
+import Model from "../models/Model";
 const Dashboard = () => {
+  const [showModel, setShowModel] = useState(false);
+  const setModel = (props) => {
+    console.log(props, "dddd");
+    setShowModel(props);
+  };
+  console.log("showModel", showModel);
   return (
     <div className="container dashboard-container ">
+      {showModel && <Model />}
+
       <h1 className="dashboard-heading">Your Profile Data and Edit</h1>
       <Grid container>
-        <Grid item xs={7}>
+        <Grid item xs={12} md={12} lg={7}>
           <Box
             className="container-profile"
             sx={{
@@ -47,7 +57,7 @@ const Dashboard = () => {
                 <span className="title">Account Information</span>
               </div>
             </div>
-            <Grid container>
+            <Grid container spacing={2}>
               <Grid
                 item
                 xs={2}
@@ -96,9 +106,14 @@ const Dashboard = () => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid container spacing={2} sx={{ mt: 2 }}>
-              <Grid item xs={4}>
-                <Grid container>
+            <Grid container spacing={2} sx={{ mt: 3 }}>
+              <Grid item xs={12} md={6} lg={4}>
+                <DataCard
+                  icon={Phone}
+                  title={"+966 508 888 993"}
+                  subTitle={"Your Phone Number"}
+                />
+                {/* <Grid container>
                   <Grid
                     item
                     xs={2}
@@ -136,261 +151,52 @@ const Dashboard = () => {
                       </Grid>
                     </Grid>
                   </Grid>
-                </Grid>
+                </Grid> */}
               </Grid>
-              <Grid item xs={8}>
-                <Grid container sx={{ ml: 1 }}>
-                  <Grid
-                    item
-                    xs={1}
-                    sx={{
-                      display: "flex",
-                      justifyContent: "start",
-                      alignItems: "center",
-                    }}
-                  >
-                    <img src={SMS} />
-                  </Grid>
-                  <Grid item xs={10}>
-                    <Grid container>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userTitle">
-                          salahmohamed@gmail.comnities
-                        </span>
-                      </Grid>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userSubTitle">Your Account Mail</span>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid>
+
+              <Grid item xs={12} md={6} lg={8}>
+                <DataCard
+                  icon={SMS}
+                  title={"salahmohamed@gmail.comnities"}
+                  subTitle={"Your Account Mail"}
+                />
               </Grid>
-            </Grid>
-            <Grid container spacing={2} sx={{ mt: 5 }}>
-              <Grid item xs={4}>
-                <Grid container>
-                  <Grid
-                    item
-                    xs={2}
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <img src={Global} />
-                  </Grid>
-                  <Grid item xs={10}>
-                    <Grid container>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userTitle">Egyptian</span>
-                      </Grid>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userSubTitle">Nationality</span>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid>
+
+              <Grid item xs={12} md={6} lg={4} sx={{ mt: 2 }}>
+                <DataCard
+                  icon={Global}
+                  title={"Egyptian"}
+                  subTitle={"Nationality"}
+                />
               </Grid>
-              <Grid item xs={5}>
-                <Grid container>
-                  <Grid
-                    item
-                    xs={2}
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <img src={User} />
-                  </Grid>
-                  <Grid item xs={10}>
-                    <Grid container>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userTitle">2081189108</span>
-                      </Grid>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userSubTitle">
-                          National Identification Number
-                        </span>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid>
+              <Grid item xs={12} md={6} lg={5} sx={{ mt: 2 }}>
+                <DataCard
+                  icon={User}
+                  title={"2081189108"}
+                  subTitle={"National Identification Number"}
+                />
               </Grid>
-              <Grid item xs={3}>
-                <Grid container>
-                  <Grid
-                    item
-                    xs={2}
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <img src={Calender} />
-                  </Grid>
-                  <Grid item xs={10}>
-                    <Grid container>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userTitle">12 Mars 1995</span>
-                      </Grid>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userSubTitle">Date of Birth</span>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid>
+              <Grid item xs={12} md={6} lg={3} sx={{ mt: 2 }}>
+                <DataCard
+                  icon={Calender}
+                  title={"12 Mars 1995"}
+                  subTitle={"Date of Birth"}
+                />
               </Grid>
-            </Grid>
-            <Grid container spacing={2} sx={{ mt: 5 }}>
-              <Grid item xs={4}>
-                <Grid container>
-                  <Grid
-                    item
-                    xs={2}
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <img src={CreateDate} />
-                  </Grid>
-                  <Grid item xs={10}>
-                    <Grid container>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userTitle">12 Mars 2022</span>
-                      </Grid>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userSubTitle">Date created</span>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid>
+
+              <Grid item xs={12} md={6} lg={4} sx={{ mt: 2 }}>
+                <DataCard
+                  icon={CreateDate}
+                  title={"12 Mars 2022"}
+                  subTitle={"Date created"}
+                />
               </Grid>
-              <Grid item xs={4}>
-                <Grid container>
-                  <Grid
-                    item
-                    xs={2}
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <img src={Award} />
-                  </Grid>
-                  <Grid item xs={10}>
-                    <Grid container>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userTitle">Account Status</span>
-                      </Grid>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userSubTitle">Account Status</span>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid>
+              <Grid item xs={12} md={6} lg={4} sx={{ mt: 2 }}>
+                <DataCard
+                  icon={Award}
+                  title={"Account Status"}
+                  subTitle={"Account Status"}
+                />
               </Grid>
             </Grid>
             <Grid
@@ -398,50 +204,18 @@ const Dashboard = () => {
               spacing={2}
               sx={{ mt: 5, display: "flex", justifyContent: "space-between" }}
             >
-              <Grid item xs={4}>
-                <Grid container>
-                  <Grid
-                    item
-                    xs={2}
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <img src={Key} />
-                  </Grid>
-                  <Grid item xs={10}>
-                    <Grid container>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userTitle">*************</span>
-                      </Grid>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userSubTitle">Password</span>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid>
+              <Grid item xs={12} md={6} lg={4}>
+                <DataCard
+                  icon={Key}
+                  title={"*************"}
+                  subTitle={"Password"}
+                />
               </Grid>
               <Grid
                 item
-                xs={4}
+                xs={12}
+                md={6}
+                lg={4}
                 sx={{
                   display: "flex",
                   justifyContent: "center",
@@ -474,27 +248,20 @@ const Dashboard = () => {
             <Grid
               container
               spacing={2}
-              sx={{ mt: 5, display: "flex", justifyContent: "space-between" }}
+              sx={{ display: "flex", justifyContent: "space-between" }}
             >
-              <Grid item xs={4}>
-                <Grid container>
-                  <Grid item xs={10}>
-                    <Grid container>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="title">National address</span>{" "}
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid>
+              <Grid
+                item
+                xs={8}
+                sx={{
+                  display: "flex",
+                  justifyContent: "start",
+                  alignItems: "center",
+                }}
+              >
+                <span className="title">National address</span>
               </Grid>
+
               <Grid
                 item
                 xs={4}
@@ -502,313 +269,72 @@ const Dashboard = () => {
                   display: "flex",
                   justifyContent: "end",
                   alignItems: "center",
-                  mr: 3,
+                  // mr: 3,
                 }}
               >
-                <span className="change-password">Edit Data</span>
+                <span
+                  className="change-password"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => setModel(true)}
+                >
+                  Edit Data
+                </span>
               </Grid>
             </Grid>
 
             <Grid container spacing={2} sx={{ mt: 5 }}>
-              <Grid item xs={3}>
-                <Grid container>
-                  <Grid
-                    item
-                    xs={2}
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <img src={Building} />
-                  </Grid>
-                  <Grid item xs={10}>
-                    <Grid container>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userTitle">15</span>
-                      </Grid>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userSubTitle">Building Number</span>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid>
+              <Grid item xs={12} md={6} lg={3}>
+                <DataCard
+                  icon={Building}
+                  title={"15"}
+                  subTitle={"Building Number"}
+                />
               </Grid>
-              <Grid item xs={3}>
-                <Grid container>
-                  <Grid
-                    item
-                    xs={2}
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <img src={Check} />
-                  </Grid>
-                  <Grid item xs={10}>
-                    <Grid container>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userTitle">123456</span>
-                      </Grid>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userSubTitle">Additional Code</span>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid>
+              <Grid item xs={12} md={6} lg={3}>
+                <DataCard
+                  icon={Check}
+                  title={"123456"}
+                  subTitle={"Additional Code"}
+                />
               </Grid>
-              <Grid item xs={3}>
-                <Grid container>
-                  <Grid
-                    item
-                    xs={2}
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <img src={Gps} />
-                  </Grid>
-                  <Grid item xs={10}>
-                    <Grid container>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userTitle">Dammam</span>
-                      </Grid>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userSubTitle">City *</span>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid>
+              <Grid item xs={12} md={6} lg={3}>
+                <DataCard icon={Gps} title={"Dammam"} subTitle={"City *"} />
               </Grid>
-              <Grid item xs={3}>
-                <Grid container>
-                  <Grid
-                    item
-                    xs={2}
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <img src={PictureFrame} />
-                  </Grid>
-                  <Grid item xs={10}>
-                    <Grid container>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userTitle">Albadya</span>
-                      </Grid>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userSubTitle">Neighborhood *</span>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid>
+              <Grid item xs={12} md={6} lg={3}>
+                <DataCard
+                  icon={PictureFrame}
+                  title={"Albadya"}
+                  subTitle={"Neighborhood *"}
+                />
               </Grid>
-            </Grid>
-            <Grid container spacing={2} sx={{ mt: 5 }}>
-              <Grid item xs={3}>
-                <Grid container>
-                  <Grid
-                    item
-                    xs={2}
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <img src={Layers} />
-                  </Grid>
-                  <Grid item xs={10}>
-                    <Grid container>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userTitle">3</span>
-                      </Grid>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userSubTitle">unit number</span>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid>
+
+              <Grid item xs={12} md={6} lg={3} sx={{ mt: 2 }}>
+                <DataCard icon={Layers} title={"3"} subTitle={"unit number"} />
               </Grid>
-              <Grid item xs={3}>
-                <Grid container>
-                  <Grid
-                    item
-                    xs={2}
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <img src={DirectBox} />
-                  </Grid>
-                  <Grid item xs={10}>
-                    <Grid container>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userTitle">3456</span>
-                      </Grid>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userSubTitle">Postal code *</span>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid>
+              <Grid item xs={12} md={6} lg={3} sx={{ mt: 2 }}>
+                <DataCard
+                  icon={DirectBox}
+                  title={"3456"}
+                  subTitle={"Postal code *"}
+                />
               </Grid>
-              <Grid item xs={3}>
-                <Grid container>
-                  <Grid
-                    item
-                    xs={2}
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <img src={Routing} />
-                  </Grid>
-                  <Grid item xs={10}>
-                    <Grid container>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userTitle">Dammam\Albadya\15\3</span>
-                      </Grid>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userSubTitle">Address*</span>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid>
+              <Grid item xs={12} md={6} lg={3} sx={{ mt: 2 }}>
+                <DataCard
+                  icon={Routing}
+                  title={`DammamAlbadya\\15\\3`}
+                  subTitle={"Address*"}
+                />
               </Grid>
             </Grid>
           </Box>
         </Grid>
         {/* right side */}
-        <Grid item xs={5}>
+        <Grid item lg={5} xs={12} md={12}>
           <Box
             className="container-profile"
             sx={{
               p: 2,
-              mb: 5,
+              mb: 2,
               bgcolor: (theme) =>
                 theme.palette.mode === "dark" ? "#101010" : "grey.50",
               color: (theme) =>
@@ -823,28 +349,21 @@ const Dashboard = () => {
           >
             <Grid
               container
-              spacing={3}
+              spacing={2}
               sx={{ display: "flex", justifyContent: "space-between" }}
             >
-              <Grid item xs={6}>
-                <Grid container>
-                  <Grid item xs={10}>
-                    <Grid container>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="title">Bank Account</span>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid>
+              <Grid
+                item
+                xs={8}
+                sx={{
+                  display: "flex",
+                  justifyContent: "start",
+                  alignItems: "center",
+                }}
+              >
+                <span className="title">Bank Account</span>
               </Grid>
+
               <Grid
                 item
                 xs={4}
@@ -852,18 +371,24 @@ const Dashboard = () => {
                   display: "flex",
                   justifyContent: "end",
                   alignItems: "center",
-                  mr: 3,
+                  // mr: 3,
                 }}
               >
-                <span className="change-password">Edit Data</span>
+                <span
+                  className="change-password"
+                  style={{ cursor: "pointer" }}
+                  // onClick={() => setModel(true)}
+                >
+                  Edit Data
+                </span>
               </Grid>
             </Grid>
 
             <Grid container spacing={1} sx={{ mt: 5 }}>
-              <Grid item xs={4}>
+              <Grid item xs={12} md={12} lg={4}>
                 <img src={ATMCard} />
               </Grid>
-              <Grid item xs={8}>
+              <Grid item xs={12} md={12} lg={8}>
                 <Grid container sx={{ ml: 1 }}>
                   <Grid
                     item
@@ -1041,3 +566,15 @@ const Dashboard = () => {
   );
 };
 export default Dashboard;
+// {
+//   title: {
+//     fontStyle: theme.typography.h2.fontStyle,
+//     fontWeight: theme.typography.h2.fontWeight,
+//     fontSize: theme.typography.h2.fontSize,
+//     lineHeight: theme.typography.h2.lineHeight,
+//     color: theme.typography.h2.color,
+//     letterSpacing: theme.typography.h2.letterSpacing,
+//     display: "flex",
+//     alignItems: "flex-end",
+//   },
+// }
