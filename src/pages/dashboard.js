@@ -1,6 +1,5 @@
 import React from "react";
 import DashboardComponenet from "../components/dashboard";
-const Dashboard = () => {
+export const Dashboard = () => {
   return <DashboardComponenet />;
 };
-export default Dashboard;

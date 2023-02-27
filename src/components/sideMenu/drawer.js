@@ -1,5 +1,4 @@
 import * as React from "react";
-import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -25,9 +24,11 @@ import StatusUp from "../../assets/status-up.png";
 import Settings from "../../assets/setting.png";
 import logoText from "../../assets/mudaraba-logotext.png";
 import logo from "../../assets/mudaraba-logo.png";
-// import { makeStyles } from "@material-ui/core/styles";
 import { Button } from "@mui/material";
 import { Grid } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { styled, useTheme } from "@mui/material/styles";
+
 const drawerWidth = 240;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
@@ -76,6 +77,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 export default function PersistentDrawerLeft({ children }) {
+  const navigate = useNavigate();
   const theme = useTheme();
   const sx = makeStyles(theme);
   const [open, setOpen] = React.useState(true);
@@ -88,7 +90,9 @@ export default function PersistentDrawerLeft({ children }) {
     setOpen(false);
   };
   // const classes = useStyles();
-
+  const handlePageSwitch = (props) => {
+    navigate(props);
+  };
   return (
     <Grid container>
       <CssBaseline />
@@ -137,12 +141,49 @@ export default function PersistentDrawerLeft({ children }) {
               <img src={logoText}></img>
             </div>
             <List sx={sx.listItemsStyle}>
-              {["Dashboard", "My Investment", "Wallet", "Operations"].map(
+              <ListItem disablePadding sx={sx.listItem}>
+                <ListItemButton onClick={() => handlePageSwitch("/dashboard")}>
+                  <ListItemIcon>
+                    <img src={KeySquare} />
+                  </ListItemIcon>
+
+                  <ListItemText>Dashboard</ListItemText>
+                </ListItemButton>
+              </ListItem>
+              <ListItem disablePadding sx={sx.listItem}>
+                <ListItemButton
+                  onClick={() => handlePageSwitch("/myInvestment")}
+                >
+                  <ListItemIcon>
+                    <img src={MoneySend} />
+                  </ListItemIcon>
+
+                  <ListItemText> My Investment</ListItemText>
+                </ListItemButton>
+              </ListItem>
+              <ListItem disablePadding sx={sx.listItem}>
+                <ListItemButton>
+                  <ListItemIcon>
+                    <img src={Walletmoney} />
+                  </ListItemIcon>
+
+                  <ListItemText>Wallet</ListItemText>
+                </ListItemButton>
+              </ListItem>
+              <ListItem disablePadding sx={sx.listItem}>
+                <ListItemButton>
+                  <ListItemIcon>
+                    <img src={StatusUp} />
+                  </ListItemIcon>
+
+                  <ListItemText>Operations</ListItemText>
+                </ListItemButton>
+              </ListItem>
+              {/* {["Dashboard", "My Investment", "Wallet", "Operations"].map(
                 (text, index) => (
                   <ListItem key={text} disablePadding>
                     <ListItemButton>
                       <ListItemIcon>
-                        {/* {index === 0 ? <InboxIcon /> : <MailIcon />} */}
                         {index == 0 && <img src={KeySquare} />}
                         {index == 1 && <img src={MoneySend} />}
                         {index == 2 && <img src={Walletmoney} />}
@@ -152,7 +193,7 @@ export default function PersistentDrawerLeft({ children }) {
                     </ListItemButton>
                   </ListItem>
                 )
-              )}
+              )} */}
             </List>
             <div className="d-flex">
               <Button sx={sx.settingButton}>
@@ -260,5 +301,8 @@ const makeStyles = (theme) => ({
   },
   settingImg: {
     marginRight: "5px",
+  },
+  listItem: {
+    paddingTop: "20px",
   },
 });

@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Login from "../components/login/login";
-import Dashboard from "../pages/dashboard";
+import { Dashboard,MyInvestment } from "../pages/index";
 import Layout from "../components/sideMenu/drawer";
 import Signup from "../components/signup/signup";
 
@@ -17,6 +17,15 @@ const PublicRoutes = () => {
             </Layout>
           }
         ></Route>
+        <Route
+          path="/myInvestment"
+          element={
+            <Layout>
+              <MyInvestment />
+            </Layout>
+          }
+        ></Route>
+
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route exact path="/" element={<Login />}></Route>

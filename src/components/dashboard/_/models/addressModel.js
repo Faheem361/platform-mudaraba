@@ -1,13 +1,6 @@
 import {
   Button,
-  Card,
-  CardActions,
-  CardContent,
-  FormControl,
   Grid,
-  IconButton,
-  Input,
-  InputLabel,
   styled,
   TextField,
   Typography,
@@ -20,18 +13,20 @@ import React, { useMemo, useState } from "react";
 import Box from "@mui/material/Box";
 import { Formik, FieldArray, useFormik } from "formik";
 import * as Yup from "yup";
-import Building from "../../assets/building-4.png";
-import Check from "../../assets/check.png";
-import Gps from "../../assets/gps.png";
-import DirectBox from "../../assets/directbox-notif.png";
-import PictureFrame from "../../assets/picture-frame.png";
-import Layers from "../../assets/layer.png";
-import Routing from "../../assets/routing.png";
-import { EditableDataCard } from "../dashboard/_/Card/editableCard";
-const Model = () => {
+import Building from "../../../../assets/building-4.png";
+import Check from "../../../../assets/check.png";
+import Gps from "../../../../assets/gps.png";
+import DirectBox from "../../../../assets/directbox-notif.png";
+import PictureFrame from "../../../../assets/picture-frame.png";
+import Layers from "../../../../assets/layer.png";
+import Routing from "../../../../assets/routing.png";
+export const Model = (props) => {
   const [open, setOpen] = React.useState(true);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    props.setShowModel(false);
+  };
   const theme = useTheme();
   const sx = makeStyles(theme);
   const NationalAddress = Yup.object().shape({
@@ -77,6 +72,7 @@ const Model = () => {
     p: 4,
   };
   console.log("formikvalues", formik);
+  const handleCloseModel = () => {};
   return (
     <Dialog
       open={open}
@@ -297,8 +293,6 @@ const Model = () => {
     </Dialog>
   );
 };
-
-export default Model;
 
 const makeStyles = (theme) => ({
   submitButton: {

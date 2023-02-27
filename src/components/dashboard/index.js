@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import Box from "@mui/material/Box";
 import "./dashboard.css";
-import { Avatar, Grid } from "@mui/material";
+import { Box, Avatar, Grid } from "@mui/material";
 import Phone from "../../assets/phone.png";
 import SMS from "../../assets/sms.png";
 import Global from "../../assets/global.png";
@@ -21,9 +20,11 @@ import Routing from "../../assets/routing.png";
 import ATMCard from "../../assets/Card.png";
 import Download from "../../assets/download.png";
 import { DataCard } from "./_";
-import Model from "../models/Model";
+import { Model, ATMmodel } from "./_";
+
 const Dashboard = () => {
   const [showModel, setShowModel] = useState(false);
+  const [showATMModel, setATMShowModel] = useState(false);
   const setModel = (props) => {
     console.log(props, "dddd");
     setShowModel(props);
@@ -31,7 +32,8 @@ const Dashboard = () => {
   console.log("showModel", showModel);
   return (
     <div className="container dashboard-container ">
-      {showModel && <Model />}
+      {showModel && <Model setShowModel={setShowModel} />}
+      {showATMModel && <ATMmodel setATMShowModel={setATMShowModel} />}
 
       <h1 className="dashboard-heading">Your Profile Data and Edit</h1>
       <Grid container>
@@ -377,7 +379,7 @@ const Dashboard = () => {
                 <span
                   className="change-password"
                   style={{ cursor: "pointer" }}
-                  // onClick={() => setModel(true)}
+                  onClick={() => setATMShowModel(true)}
                 >
                   Edit Data
                 </span>
