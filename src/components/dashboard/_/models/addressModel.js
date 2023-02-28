@@ -7,11 +7,10 @@ import {
   Dialog,
   DialogContent,
   useTheme,
+  Box,
 } from "@mui/material";
-
-import React, { useMemo, useState } from "react";
-import Box from "@mui/material/Box";
-import { Formik, FieldArray, useFormik } from "formik";
+import React from "react";
+import { useFormik } from "formik";
 import * as Yup from "yup";
 import Building from "../../../../assets/building-4.png";
 import Check from "../../../../assets/check.png";
@@ -105,15 +104,12 @@ export const Model = (props) => {
           <form onSubmit={formik.handleSubmit}>
             <Grid container spacing={2} sx={{ mt: 1 }}>
               <Grid item xs={12} md={6}>
-                {/* <EditableDataCard
-                  subTitle=" Building number"
-                  title={formik.values.buildingnumber}
-                /> */}
                 <Grid container>
                   <Grid item xs={1} sx={sx.flexCenter}>
                     <img
                       src={Building}
                       style={{ width: "22px", height: "22px" }}
+                      alt=""
                     />
                   </Grid>
                   <Grid item xs={8} sx={sx.flexStart}>
@@ -139,6 +135,7 @@ export const Model = (props) => {
                     <img
                       src={Layers}
                       style={{ width: "22px", height: "22px" }}
+                      alt=""
                     />
                   </Grid>
                   <Grid item xs={8} sx={sx.flexStart}>
@@ -165,6 +162,7 @@ export const Model = (props) => {
                     <img
                       src={Check}
                       style={{ width: "22px", height: "22px" }}
+                      alt=""
                     />
                   </Grid>
                   <Grid item xs={8} sx={sx.flexStart}>
@@ -190,6 +188,7 @@ export const Model = (props) => {
                     <img
                       src={DirectBox}
                       style={{ width: "22px", height: "22px" }}
+                      alt=""
                     />
                   </Grid>
                   <Grid item xs={8} sx={sx.flexStart}>
@@ -212,7 +211,11 @@ export const Model = (props) => {
               <Grid item xs={12} md={6}>
                 <Grid container>
                   <Grid item xs={1} sx={sx.flexCenter}>
-                    <img src={Gps} style={{ width: "22px", height: "22px" }} />
+                    <img
+                      src={Gps}
+                      style={{ width: "22px", height: "22px" }}
+                      alt=""
+                    />
                   </Grid>
                   <Grid item xs={8} sx={sx.flexStart}>
                     <Typography> City</Typography>
@@ -237,6 +240,7 @@ export const Model = (props) => {
                     <img
                       src={PictureFrame}
                       style={{ width: "22px", height: "22px" }}
+                      alt=""
                     />
                   </Grid>
                   <Grid item xs={8} sx={sx.flexStart}>
@@ -262,6 +266,7 @@ export const Model = (props) => {
                     <img
                       src={Routing}
                       style={{ width: "22px", height: "22px" }}
+                      alt=""
                     />
                   </Grid>
                   <Grid item xs={8} sx={sx.flexStart}>

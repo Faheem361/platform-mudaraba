@@ -1,28 +1,23 @@
 import React, { useState } from "react";
 import LoginBackground from "../../assets/login-right.png";
-import { Grid } from "@mui/material";
 import {
   Box,
   TextField,
   styled,
-  InputAdornment,
-  OutlinedInput,
-  InputLabel,
   IconButton,
   useTheme,
   Button,
   Checkbox,
+  Grid,
 } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-
-import "./login.css";
 import { Typography } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
+import "./login.css";
 import * as Yup from "yup";
-import { CustomCheckbox } from "./_";
-export default function Login() {
+export function Login() {
   const theme = useTheme();
   const sx = makeStyles(theme);
   const navigate = useNavigate();

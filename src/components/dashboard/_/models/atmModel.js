@@ -7,11 +7,10 @@ import {
   Dialog,
   DialogContent,
   useTheme,
+  Box,
 } from "@mui/material";
-
-import React, { useMemo, useState } from "react";
-import Box from "@mui/material/Box";
-import { Formik, FieldArray, useFormik } from "formik";
+import React from "react";
+import { useFormik } from "formik";
 import * as Yup from "yup";
 import Check from "../../../../assets/check.png";
 import Bank from "../../../../assets/bank.png";
@@ -87,6 +86,7 @@ export const ATMmodel = (props) => {
                     <img
                       src={Check}
                       style={{ width: "22px", height: "22px" }}
+                      alt=""
                     />
                   </Grid>
                   <Grid item xs={8} sx={sx.flexStart}>
@@ -108,7 +108,11 @@ export const ATMmodel = (props) => {
               <Grid item xs={12}>
                 <Grid container>
                   <Grid item xs={1} sx={sx.flexCenter}>
-                    <img src={Bank} style={{ width: "22px", height: "22px" }} />
+                    <img
+                      src={Bank}
+                      style={{ width: "22px", height: "22px" }}
+                      alt=""
+                    />
                   </Grid>
                   <Grid item xs={8} sx={sx.flexStart}>
                     <Typography>Bank name</Typography>
@@ -133,6 +137,7 @@ export const ATMmodel = (props) => {
                     <img
                       src={Profile}
                       style={{ width: "22px", height: "22px" }}
+                      alt=""
                     />
                   </Grid>
                   <Grid item xs={8} sx={sx.flexStart}>

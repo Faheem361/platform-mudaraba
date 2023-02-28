@@ -1,10 +1,7 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Login from "../components/login/login";
-import { Dashboard,MyInvestment } from "../pages/index";
-import Layout from "../components/sideMenu/drawer";
-import Signup from "../components/signup/signup";
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Dashboard, MyInvestment } from "../pages/index";
+import { Layout,Signup,Login} from "../components";
 const PublicRoutes = () => {
   return (
     <Router>
@@ -18,7 +15,7 @@ const PublicRoutes = () => {
           }
         ></Route>
         <Route
-          path="/myInvestment"
+          path="/my-investment"
           element={
             <Layout>
               <MyInvestment />

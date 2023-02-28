@@ -1,17 +1,14 @@
 import React, { useState } from "react";
 import LoginBackground from "../../assets/login-right.png";
-import { Grid } from "@mui/material";
 import {
   Box,
   TextField,
   styled,
-  InputAdornment,
-  OutlinedInput,
-  InputLabel,
   IconButton,
   Checkbox,
   useTheme,
   Button,
+  Grid,
 } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
@@ -20,7 +17,8 @@ import { Typography } from "@material-ui/core";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import "./signup.css";
-export default function Signup() {
+
+export function Signup() {
   const theme = useTheme();
   const navigate = useNavigate();
   const sx = makeStyles(theme);
@@ -63,7 +61,6 @@ export default function Signup() {
       style={{
         backgroundImage: `url(${LoginBackground})`,
         height: "auto",
-        //   backgroundPosition: "right",
         backgroundSize: "100%",
         backgroundRepeat: "no-repeat",
       }}

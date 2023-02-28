@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./dashboard.css";
 import { Box, Avatar, Grid } from "@mui/material";
 import Phone from "../../assets/phone.png";
 import SMS from "../../assets/sms.png";
@@ -21,20 +20,18 @@ import ATMCard from "../../assets/Card.png";
 import Download from "../../assets/download.png";
 import { DataCard } from "./_";
 import { Model, ATMmodel } from "./_";
+import "./dashboard.css";
 
 const Dashboard = () => {
   const [showModel, setShowModel] = useState(false);
   const [showATMModel, setATMShowModel] = useState(false);
   const setModel = (props) => {
-    console.log(props, "dddd");
     setShowModel(props);
   };
-  console.log("showModel", showModel);
   return (
     <div className="container dashboard-container ">
       {showModel && <Model setShowModel={setShowModel} />}
       {showATMModel && <ATMmodel setATMShowModel={setATMShowModel} />}
-
       <h1 className="dashboard-heading">Your Profile Data and Edit</h1>
       <Grid container>
         <Grid item xs={12} md={12} lg={7}>
@@ -115,45 +112,6 @@ const Dashboard = () => {
                   title={"+966 508 888 993"}
                   subTitle={"Your Phone Number"}
                 />
-                {/* <Grid container>
-                  <Grid
-                    item
-                    xs={2}
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <img src={Phone} />
-                  </Grid>
-                  <Grid item xs={10}>
-                    <Grid container>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userTitle">+966 508 888 993</span>
-                      </Grid>
-                      <Grid
-                        item
-                        xs={12}
-                        sx={{
-                          display: "flex",
-                          justifyContent: "start",
-                          alignItems: "center",
-                        }}
-                      >
-                        <span className="userSubTitle">Your Phone Number</span>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid> */}
               </Grid>
 
               <Grid item xs={12} md={6} lg={8}>
@@ -225,7 +183,7 @@ const Dashboard = () => {
                 }}
               >
                 <span className="change-password">Change Your Password</span>
-                <img src={RightArrow} />
+                <img src={RightArrow} alt="" />
               </Grid>
             </Grid>
           </Box>
@@ -388,7 +346,7 @@ const Dashboard = () => {
 
             <Grid container spacing={1} sx={{ mt: 5 }}>
               <Grid item xs={12} md={12} lg={4}>
-                <img src={ATMCard} />
+                <img src={ATMCard} alt="" />
               </Grid>
               <Grid item xs={12} md={12} lg={8}>
                 <Grid container sx={{ ml: 1 }}>
@@ -556,7 +514,7 @@ const Dashboard = () => {
                 }}
               >
                 <button className="download">
-                  <img src={Download} />
+                  <img src={Download} alt="" />
                   Download
                 </button>
               </Grid>
@@ -568,15 +526,3 @@ const Dashboard = () => {
   );
 };
 export default Dashboard;
-// {
-//   title: {
-//     fontStyle: theme.typography.h2.fontStyle,
-//     fontWeight: theme.typography.h2.fontWeight,
-//     fontSize: theme.typography.h2.fontSize,
-//     lineHeight: theme.typography.h2.lineHeight,
-//     color: theme.typography.h2.color,
-//     letterSpacing: theme.typography.h2.letterSpacing,
-//     display: "flex",
-//     alignItems: "flex-end",
-//   },
-// }

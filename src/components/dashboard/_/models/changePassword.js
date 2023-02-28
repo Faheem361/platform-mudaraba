@@ -7,10 +7,10 @@ import {
   Dialog,
   DialogContent,
   useTheme,
+  Box,
 } from "@mui/material";
 
 import React, { useMemo, useState } from "react";
-import Box from "@mui/material/Box";
 import { Formik, FieldArray, useFormik } from "formik";
 import * as Yup from "yup";
 import Key from "../../../../assets/key.png";
@@ -82,7 +82,11 @@ export const ChangePassword = (props) => {
               <Grid item xs={12}>
                 <Grid container>
                   <Grid item xs={1} sx={sx.flexCenter}>
-                    <img src={Key} style={{ width: "22px", height: "22px" }} />
+                    <img
+                      src={Key}
+                      style={{ width: "22px", height: "22px" }}
+                      alt=""
+                    />
                   </Grid>
                   <Grid item xs={8} sx={sx.flexStart}>
                     <Typography>Your Password</Typography>
@@ -103,7 +107,11 @@ export const ChangePassword = (props) => {
               <Grid item xs={12}>
                 <Grid container>
                   <Grid item xs={1} sx={sx.flexCenter}>
-                    <img src={Key} style={{ width: "22px", height: "22px" }} />
+                    <img
+                      src={Key}
+                      style={{ width: "22px", height: "22px" }}
+                      alt=""
+                    />
                   </Grid>
                   <Grid item xs={8} sx={sx.flexStart}>
                     <Typography>New Password</Typography>
@@ -125,7 +133,11 @@ export const ChangePassword = (props) => {
               <Grid item xs={12}>
                 <Grid container>
                   <Grid item xs={1} sx={sx.flexCenter}>
-                    <img src={Key} style={{ width: "22px", height: "22px" }} />
+                    <img
+                      src={Key}
+                      style={{ width: "22px", height: "22px" }}
+                      alt=""
+                    />
                   </Grid>
                   <Grid item xs={8} sx={sx.flexStart}>
                     <Typography>New Password again</Typography>
