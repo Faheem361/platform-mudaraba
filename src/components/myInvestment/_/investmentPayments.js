@@ -9,73 +9,82 @@ import {
   useTheme,
   Grid,
   Typography,
+  Skeleton,
 } from "@mui/material";
-
 const columns = [
-  { id: "orderNumber", label: "Order number", minWidth: 120 },
-  { id: "Date", label: "Date", minWidth: 120 },
+  { id: "id", label: "Order number", minWidth: 120 },
+  { id: "name", label: "Date", minWidth: 120 },
   {
-    id: "paymentDate",
+    id: "username",
     label: "Payment Date",
     minWidth: 120,
     // format: (value) => value.toLocaleString('en-US'),
   },
   {
-    id: "theAmount",
+    id: "email",
     label: "The Amount",
     minWidth: 170,
     // format: (value) => value.toLocaleString('en-US'),
   },
 ];
 
-function createData(orderNumber, Date, paymentDate, theAmount) {
-  return { orderNumber, Date, paymentDate, theAmount };
+function createData(id, name, username, email) {
+  return { id, name, username, email };
 }
 // Order number,due date,Payment Date, the amount
-const rows = [
-  createData(
-    "APP-FUND-000192",
-    "12 Mars 2022",
-    "12 Mars 2022",
-    "3,200,000.00 R.S"
-  ),
-  createData(
-    "APP-FUND-000192",
-    "12 Mars 2022",
-    "12 Mars 2022",
-    "3,200,000.00 R.S"
-  ),
-  createData(
-    "APP-FUND-000192",
-    "12 Mars 2022",
-    "12 Mars 2022",
-    "3,200,000.00 R.S"
-  ),
-  createData(
-    "APP-FUND-000192",
-    "12 Mars 2022",
-    "12 Mars 2022",
-    "3,200,000.00 R.S"
-  ),
-  createData(
-    "APP-FUND-000192",
-    "12 Mars 2022",
-    "12 Mars 2022",
-    "3,200,000.00 R.S"
-  ),
-  createData(
-    "APP-FUND-000192",
-    "12 Mars 2022",
-    "12 Mars 2022",
-    "3,200,000.00 R.S"
-  ),
-];
 
-export function InvestmentOperations() {
+export function InvestmentPayments() {
   const theme = useTheme();
   const sx = makeStyles(theme);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [user, setUser] = React.useState([null]);
+
+  const rows = [
+    user?.map((item) => {
+      if (item != null) {
+        return createData(item.id, item.name, item.username, item.email);
+      } else return;
+    }),
+
+    // createData(
+    //   "APP-FUND-000192",
+    //   "12 Mars 2022",
+    //   "12 Mars 2022",
+    //   "3,200,000.00 R.S"
+    // ),
+    // createData(
+    //   "APP-FUND-000192",
+    //   "12 Mars 2022",
+    //   "12 Mars 2022",
+    //   "3,200,000.00 R.S"
+    // ),
+    // createData(
+    //   "APP-FUND-000192",
+    //   "12 Mars 2022",
+    //   "12 Mars 2022",
+    //   "3,200,000.00 R.S"
+    // ),
+    // createData(
+    //   "APP-FUND-000192",
+    //   "12 Mars 2022",
+    //   "12 Mars 2022",
+    //   "3,200,000.00 R.S"
+    // ),
+    // createData(
+    //   "APP-FUND-000192",
+    //   "12 Mars 2022",
+    //   "12 Mars 2022",
+    //   "3,200,000.00 R.S"
+    // ),
+    // createData(
+    //   "APP-FUND-000192",
+    //   "12 Mars 2022",
+    //   "12 Mars 2022",
+    //   "3,200,000.00 R.S"
+    // ),
+  ];
+
   // const handleChangePage = (event, newPage) => {
   //     setPage(newPage);
   // };
@@ -84,7 +93,15 @@ export function InvestmentOperations() {
   //     setRowsPerPage(+event.target.value);
   //     setPage(0);
   // };
-
+  React.useEffect(() => {
+    setTimeout(() => {
+      fetch("https://jsonplaceholder.typicode.com/users")
+        .then((res) => res.json())
+        .then((result) => {
+          setUser([...result]);
+        });
+    }, 10000);
+  }, []);
   return (
     <>
       <Grid
@@ -138,24 +155,50 @@ export function InvestmentOperations() {
               ))}
             </TableRow>
           </TableHead>
+
           <TableBody>
-            {rows
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((row, index) => {
-                return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={index}>
-                    {columns.map((column) => {
-                      const value = row[column.id];
-                      return (
-                        <TableCell key={column.id} align={column.align}>
-                          {column.format && typeof value === "number"
-                            ? column.format(value)
-                            : value}
-                        </TableCell>
-                      );
-                    })}
-                  </TableRow>
-                );
+            {rows[0]
+              ?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              ?.map((row, index) => {
+                if (row) {
+                  return (
+                    <TableRow hover role="checkbox" tabIndex={-1} key={index}>
+                      {columns?.map((column) => {
+                        const value = row[column?.id];
+                        return (
+                          <TableCell key={column.id} align={column.align}>
+                            {column.format && typeof value === "number"
+                              ? column.format(value)
+                              : value}
+                          </TableCell>
+                        );
+                      })}
+                    </TableRow>
+                  );
+                } else {
+                  return (
+                    <>
+                      <TableRow hover role="checkbox" tabIndex={-1} key={0}>
+                        {columns?.map((column) => {
+                          return (
+                            <TableCell align={column.align}>
+                              <Skeleton animation="wave" />
+                            </TableCell>
+                          );
+                        })}
+                      </TableRow>
+                      <TableRow hover role="checkbox" tabIndex={-1} key={1}>
+                        {columns?.map((column) => {
+                          return (
+                            <TableCell align={column.align}>
+                              <Skeleton animation="wave" />
+                            </TableCell>
+                          );
+                        })}
+                      </TableRow>
+                    </>
+                  );
+                }
               })}
           </TableBody>
         </Table>

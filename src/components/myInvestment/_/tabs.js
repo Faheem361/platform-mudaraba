@@ -2,7 +2,11 @@ import * as React from "react";
 import { styled } from "@mui/material/styles";
 import { Box, Tab, Tabs, useTheme, Grid, Typography } from "@mui/material";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { InvestmentOperations, InvestmentPerformance } from ".";
+import {
+  InvestmentOperations,
+  InvestmentPayments,
+  InvestmentPerformance,
+} from ".";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -86,6 +90,7 @@ export const CustomTabs = () => {
       setValue(0);
     }
   }, [tab]);
+
   return (
     <Box sx={{ width: "100%" }}>
       <Box sx={sx.boxStyle}>
@@ -135,7 +140,7 @@ export const CustomTabs = () => {
           <InvestmentOperations />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          Payments
+          <InvestmentPayments />
         </TabPanel>
         <TabPanel value={value} index={2}>
           <InvestmentPerformance />

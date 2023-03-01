@@ -16,7 +16,7 @@ import Settings from "../../assets/setting.png";
 import logoText from "../../assets/mudaraba-logotext.png";
 import logo from "../../assets/mudaraba-logo.png";
 import { Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { styled, useTheme } from "@mui/material/styles";
 
 const drawerWidth = 240;
@@ -31,10 +31,42 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 export default function DrawerMenu({ open, handleDrawerClose }) {
   const navigate = useNavigate();
   const theme = useTheme();
+  let location = useLocation();
   const sx = makeStyles(theme);
+  const [value, setValue] = React.useState(0);
   const handlePageSwitch = (props) => {
     navigate(props);
   };
+  React.useEffect(() => {
+    let path = location.pathname;
+    if (path) {
+      switch (path.toLowerCase()) {
+        case "/dashboard":
+          setValue(0);
+          break;
+        case "/my-investment":
+          setValue(1);
+          break;
+        case "/my-investment/":
+          setValue(1);
+          break;
+        case "performance":
+          setValue(2);
+          break;
+        case "performance":
+          setValue(3);
+          break;
+        case "setting":
+          setValue(4);
+          break;
+        default:
+          setValue(0);
+          break;
+      }
+    } else {
+      setValue(0);
+    }
+  }, [location.pathname]);
   return (
     <Drawer
       sx={{
@@ -64,7 +96,10 @@ export default function DrawerMenu({ open, handleDrawerClose }) {
       </div>
       <List sx={sx.listItemsStyle}>
         <ListItem disablePadding sx={sx.listItem}>
-          <ListItemButton onClick={() => handlePageSwitch("/dashboard")}>
+          <ListItemButton
+            onClick={() => handlePageSwitch("/dashboard")}
+            sx={value == 0 ? sx.lightButton : ""}
+          >
             <ListItemIcon>
               <img src={KeySquare} alt="" />
             </ListItemIcon>
@@ -73,7 +108,10 @@ export default function DrawerMenu({ open, handleDrawerClose }) {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding sx={sx.listItem}>
-          <ListItemButton onClick={() => handlePageSwitch("/my-investment")}>
+          <ListItemButton
+            onClick={() => handlePageSwitch("/my-investment")}
+            sx={value == 1 ? sx.lightButton : ""}
+          >
             <ListItemIcon>
               <img src={MoneySend} alt="" />
             </ListItemIcon>
@@ -82,7 +120,7 @@ export default function DrawerMenu({ open, handleDrawerClose }) {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding sx={sx.listItem}>
-          <ListItemButton>
+          <ListItemButton sx={value == 2 ? sx.lightButton : ""}>
             <ListItemIcon>
               <img src={WalletMoney} alt="" />
             </ListItemIcon>
@@ -91,7 +129,7 @@ export default function DrawerMenu({ open, handleDrawerClose }) {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding sx={sx.listItem}>
-          <ListItemButton>
+          <ListItemButton sx={value == 3 ? sx.lightButton : ""}>
             <ListItemIcon>
               <img src={StatusUp} alt="" />
             </ListItemIcon>
@@ -99,13 +137,22 @@ export default function DrawerMenu({ open, handleDrawerClose }) {
             <ListItemText>Operations</ListItemText>
           </ListItemButton>
         </ListItem>
+        <ListItem disablePadding sx={sx.listItem}>
+          <ListItemButton sx={value == 4 ? sx.lightButton : ""}>
+            <ListItemIcon>
+              <img src={Settings} style={sx.settingImg} alt="" />
+            </ListItemIcon>
+
+            <ListItemText>Settings</ListItemText>
+          </ListItemButton>
+        </ListItem>
       </List>
-      <div className="d-flex">
+      {/* <div className="d-flex">
         <Button sx={sx.settingButton}>
           <img src={Settings} style={sx.settingImg} alt="" />
           <span>Settings</span>
         </Button>
-      </div>
+      </div> */}
     </Drawer>
   );
 }
@@ -119,12 +166,11 @@ const makeStyles = (theme) => ({
     letterSpacing: "-0.01em !important",
     color: "#9197B3",
   },
-  settingButton: {
+  lightButton: {
     background: "linear-gradient(0deg, #00E2A1, #00E2A1), #00B1FF",
-    borderradius: "8px",
-    width: "200px",
-    height: "46px",
-    color: "#fff !important",
+    // width: "200px",
+    // height: "46px",
+    color: "#fff",
   },
   settingImg: {
     marginRight: "5px",
