@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Dashboard, MyInvestment } from "../pages/index";
-import { Layout,Signup,Login} from "../components";
+import { Dashboard } from "../pages/index";
+import { Layout, Signup, Login, Operations } from "../components";
 const PublicRoutes = () => {
   return (
     <Router>
@@ -16,13 +16,24 @@ const PublicRoutes = () => {
         ></Route>
         <Route
           path="/my-investment"
+          element={<Layout>{/* <Operations /> */}</Layout>}
+        ></Route>
+        <Route
+          path="/operations"
           element={
             <Layout>
-              <MyInvestment />
+              <Operations />
             </Layout>
           }
         ></Route>
-
+        <Route
+          path="/wallet"
+          element={<Layout>{/* <Operations /> */}</Layout>}
+        ></Route>
+        <Route
+          path="/settings"
+          element={<Layout>{/* <Operations /> */}</Layout>}
+        ></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route exact path="/" element={<Login />}></Route>

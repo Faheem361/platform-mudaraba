@@ -50,13 +50,13 @@ export default function DrawerMenu({ open, handleDrawerClose }) {
         case "/my-investment/":
           setValue(1);
           break;
-        case "performance":
+        case "/wallet":
           setValue(2);
           break;
-        case "performance":
+        case "/operations":
           setValue(3);
           break;
-        case "setting":
+        case "/settings":
           setValue(4);
           break;
         default:
@@ -120,7 +120,10 @@ export default function DrawerMenu({ open, handleDrawerClose }) {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding sx={sx.listItem}>
-          <ListItemButton sx={value == 2 ? sx.lightButton : ""}>
+          <ListItemButton
+            sx={value == 2 ? sx.lightButton : ""}
+            onClick={() => handlePageSwitch("/wallet")}
+          >
             <ListItemIcon>
               <img src={WalletMoney} alt="" />
             </ListItemIcon>
@@ -129,7 +132,10 @@ export default function DrawerMenu({ open, handleDrawerClose }) {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding sx={sx.listItem}>
-          <ListItemButton sx={value == 3 ? sx.lightButton : ""}>
+          <ListItemButton
+            sx={value == 3 ? sx.lightButton : ""}
+            onClick={() => handlePageSwitch("/operations")}
+          >
             <ListItemIcon>
               <img src={StatusUp} alt="" />
             </ListItemIcon>
@@ -138,7 +144,10 @@ export default function DrawerMenu({ open, handleDrawerClose }) {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding sx={sx.listItem}>
-          <ListItemButton sx={value == 4 ? sx.lightButton : ""}>
+          <ListItemButton
+            sx={value == 4 ? sx.lightButton : ""}
+            onClick={() => handlePageSwitch("/settings")}
+          >
             <ListItemIcon>
               <img src={Settings} style={sx.settingImg} alt="" />
             </ListItemIcon>

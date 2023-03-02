@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, useTheme } from "@mui/material";
 import { CustomTabs } from "./_";
-const Dashboard = () => {
+export const Operations = () => {
   const theme = useTheme();
   const sx = makeStyles(theme);
   return (
@@ -37,7 +37,6 @@ const Dashboard = () => {
     </div>
   );
 };
-export default Dashboard;
 
 const makeStyles = (theme) => ({
   investerHeading: {

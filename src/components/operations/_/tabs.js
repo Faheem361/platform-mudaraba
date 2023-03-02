@@ -53,20 +53,19 @@ export const CustomTabs = () => {
   const navigate = useNavigate();
   const theme = useTheme();
   const sx = makeStyles(theme);
-
   const handleChange = (event, newValue) => {
     switch (newValue) {
       case 0:
-        navigate(`/my-investment/?tab=operations`);
+        navigate(`?tab=operations`);
         break;
       case 1:
-        navigate(`/my-investment/?tab=payments`);
+        navigate(`?tab=payments`);
         break;
       case 2:
-        navigate(`/my-investment/?tab=performance`);
+        navigate(`?tab=performance`);
         break;
       default:
-        navigate(`/my-investment/?tab=operations`);
+        navigate(`?tab=operations`);
         break;
     }
   };
