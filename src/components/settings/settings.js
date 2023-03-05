@@ -20,9 +20,9 @@ import ATMCard from "../../assets/Card.png";
 import Download from "../../assets/download.png";
 import { DataCard } from "./_";
 import { Model, ATMmodel } from "./_";
-import "./dashboard.css";
+import "./settings.css";
 
-const Dashboard = () => {
+export const Settings = () => {
   const [showModel, setShowModel] = useState(false);
   const [showATMModel, setATMShowModel] = useState(false);
   const setModel = (props) => {
@@ -525,4 +525,3 @@ const Dashboard = () => {
     </div>
   );
 };
-export default Dashboard;

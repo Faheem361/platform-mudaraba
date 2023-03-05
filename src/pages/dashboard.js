@@ -1,5 +1,5 @@
 import React from "react";
-import DashboardComponenet from "../components/dashboard";
+import {DashboardComponenet} from "../component/";
 export const Dashboard = () => {
   return <DashboardComponenet />;
 };
