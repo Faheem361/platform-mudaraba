@@ -11,16 +11,16 @@ import Coin from "../../../assets/investment/coin.png";
 import Percent from "../../../assets/investment/percentage-square.png";
 import Receipt from "../../../assets/investment/receipt-2.png";
 import RecieptSearch from "../../../assets/investment/receipt-search.png";
-import OneWeb from "../../../assets/investment/oneWeb.png";
+import TwoWeb from "../../../assets/investment/twoWeb.png";
 import CustomizedProgressBars from "./progress";
 import { SingleCard } from "./singleCard";
-export const DataCard = ({ icon, title, subTitle }) => {
+export const DataCard2 = ({ icon, title, subTitle }) => {
   const theme = useTheme();
   const sx = makeStyles(theme);
   return (
     <Grid
       container
-      // sx={sx.boxStyle2}
+      spacing={0}
       sx={{ display: "flex", justifyContent: "space-between" }}
     >
       <Grid
@@ -28,10 +28,10 @@ export const DataCard = ({ icon, title, subTitle }) => {
         sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}
       >
         <Grid item xs={6} md={6} lg={6} sx={sx.flexStart}>
-          <img src={OneWeb} alt="" />
+          <img src={TwoWeb} alt="" />
         </Grid>
         <Grid item xs={3} md={3} lg={3} sx={sx.flexEnd}>
-          <span style={sx.timeButton}>after 1 day</span>
+          <span style={sx.timeButton}>1 day left</span>
         </Grid>
       </Grid>
 
@@ -150,17 +150,6 @@ export const DataCard = ({ icon, title, subTitle }) => {
 };
 
 const makeStyles = (theme) => ({
-  boxStyle2: {
-    mb: 5,
-    bgcolor: (theme) => (theme.palette.mode === "dark" ? "#101010" : "grey.50"),
-    color: (theme) => (theme.palette.mode === "dark" ? "grey.300" : "grey.800"),
-    border: "1px solid",
-    borderColor: (theme) =>
-      theme.palette.mode === "dark" ? "grey.800" : "grey.300",
-    borderRadius: 2,
-    fontSize: "0.875rem",
-    fontWeight: "700",
-  },
   flexStart: {
     display: "flex",
     justifyContent: "start",
@@ -195,15 +184,15 @@ const makeStyles = (theme) => ({
     borderRadius: "10px",
   },
   loginButton: {
-    background: theme.palette.primary.main,
+    background: "#00B1FF",
     borderRadius: "10px",
     // fontSize: theme.palette.primary.fontSize,
     fontSize: "12px",
     fontWeight: theme.typography.h1.fontWeight,
     lineHeight: theme.typography.h2.lineHeight,
     height: "40px",
-    border: "1px solid #00E2A1",
-    color: "#00E2A1",
+    border: "1px solid #00B1FF",
+    color: "#fff",
     width: "95%",
   },
   invest: {
@@ -211,10 +200,10 @@ const makeStyles = (theme) => ({
     fontSize: "11px",
   },
   timeButton: {
-    background: "#F2F4F8",
-    border: "1px solid ##F2F4F8",
+    background: "rgba(255, 4, 120, 0.07)",
+    border: "1px solid #F2F4F8",
     borderRadius: "10px",
-    color: "#9197B3",
+    color: "#FF0076",
     padding: "10px",
     fontSize: "10px",
   },

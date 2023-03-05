@@ -19,7 +19,11 @@ const PublicRoutes = () => {
         ></Route>
         <Route
           path="/my-investment"
-          element={<Layout>{/* <MyInvestment /> */}</Layout>}
+          element={
+            <Layout>
+              <MyInvestment />
+            </Layout>
+          }
         ></Route>
         <Route
           path="/operations"

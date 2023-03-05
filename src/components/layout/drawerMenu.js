@@ -1,13 +1,19 @@
 import * as React from "react";
-import Drawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
-import IconButton from "@mui/material/IconButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
+import {
+  IconButton,
+  List,
+  Drawer,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  Avatar,
+  Button,
+  Grid,
+  Typography,
+} from "@mui/material";
 import WalletMoney from "../../assets/wallet-money.png";
 import KeySquare from "../../assets/key-square.png";
 import MoneySend from "../../assets/money-send.png";
@@ -15,9 +21,9 @@ import StatusUp from "../../assets/status-up.png";
 import Settings from "../../assets/setting.png";
 import logoText from "../../assets/mudaraba-logotext.png";
 import logo from "../../assets/mudaraba-logo.png";
-import { Button } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 import { styled, useTheme } from "@mui/material/styles";
+import { DataCard } from "../settings/_";
 
 const drawerWidth = 240;
 
@@ -84,15 +90,27 @@ export default function DrawerMenu({ open, handleDrawerClose }) {
       <DrawerHeader>
         <IconButton onClick={handleDrawerClose}>
           {theme.direction === "ltr" ? (
-            <ChevronLeftIcon />
+            <>
+              <ChevronLeftIcon />
+            </>
           ) : (
             <ChevronRightIcon />
           )}
         </IconButton>
       </DrawerHeader>
-      <div style={{ marginTop: "20px" }}>
-        <img src={logo} alt="" />
-        <img src={logoText} alt="" />
+      <div>
+        <img
+          src={logo}
+          alt=""
+          onClick={() => handlePageSwitch("/dashboard")}
+          style={{ cursor: "pointer" }}
+        />
+        <img
+          src={logoText}
+          alt=""
+          onClick={() => handlePageSwitch("/dashboard")}
+          style={{ cursor: "pointer" }}
+        />
       </div>
       <List sx={sx.listItemsStyle}>
         <ListItem disablePadding sx={sx.listItem}>
@@ -104,7 +122,12 @@ export default function DrawerMenu({ open, handleDrawerClose }) {
               <img src={KeySquare} alt="" />
             </ListItemIcon>
 
-            <ListItemText>Dashboard</ListItemText>
+            <Typography
+              style={value == 0 ? sx.lightButton : sx.listItemText}
+              variant="body2"
+            >
+              Dashboard
+            </Typography>
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding sx={sx.listItem}>
@@ -116,7 +139,12 @@ export default function DrawerMenu({ open, handleDrawerClose }) {
               <img src={MoneySend} alt="" />
             </ListItemIcon>
 
-            <ListItemText> My Investment</ListItemText>
+            <Typography
+              style={value == 1 ? sx.lightButton : sx.listItemText}
+              variant="body2"
+            >
+              My Investment
+            </Typography>
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding sx={sx.listItem}>
@@ -128,7 +156,12 @@ export default function DrawerMenu({ open, handleDrawerClose }) {
               <img src={WalletMoney} alt="" />
             </ListItemIcon>
 
-            <ListItemText>Wallet</ListItemText>
+            <Typography
+              style={value == 2 ? sx.lightButton : sx.listItemText}
+              variant="body2"
+            >
+              Wallet
+            </Typography>
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding sx={sx.listItem}>
@@ -140,7 +173,12 @@ export default function DrawerMenu({ open, handleDrawerClose }) {
               <img src={StatusUp} alt="" />
             </ListItemIcon>
 
-            <ListItemText>Operations</ListItemText>
+            <Typography
+              style={value == 3 ? sx.lightButton : sx.listItemText}
+              variant="body2"
+            >
+              Operations
+            </Typography>
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding sx={sx.listItem}>
@@ -152,22 +190,74 @@ export default function DrawerMenu({ open, handleDrawerClose }) {
               <img src={Settings} style={sx.settingImg} alt="" />
             </ListItemIcon>
 
-            <ListItemText>Settings</ListItemText>
+            <Typography
+              style={value == 4 ? sx.lightButton : sx.listItemText}
+              variant="body2"
+            >
+              Settings
+            </Typography>
           </ListItemButton>
         </ListItem>
       </List>
-      {/* <div className="d-flex">
-        <Button sx={sx.settingButton}>
-          <img src={Settings} style={sx.settingImg} alt="" />
-          <span>Settings</span>
-        </Button>
-      </div> */}
+      {/* <Grid container>
+        <Grid item xs={12} md={8} lg={8}>
+          <Grid container spacing={2}>
+            <Grid
+              item
+              xs={2}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                m: 2,
+                width: "20px",
+              }}
+            >
+              <Avatar className="avatar " />
+            </Grid>
+            <Grid
+              item
+              xs={7}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                m: 2,
+              }}
+            >
+              <Grid container>
+                <Grid
+                  item
+                  xs={12}
+                  sx={{
+                    display: "flex",
+                    justifyContent: "start",
+                    alignItems: "center",
+                  }}
+                >
+                  <span className="userTitle">Saleh Muhammad</span>
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
+                  sx={{
+                    display: "flex",
+                    justifyContent: "start",
+                    alignItems: "center",
+                  }}
+                >
+                  <span className="userSubTitle">@salah_Mohamed</span>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid> */}
     </Drawer>
   );
 }
 const makeStyles = (theme) => ({
   listItemsStyle: {
-    fontFamily: "Source Sans Pro !important",
     fontStyle: "normal",
     fontWeight: "600 !important",
     fontSize: "19px !important",
@@ -177,8 +267,10 @@ const makeStyles = (theme) => ({
   },
   lightButton: {
     background: "linear-gradient(0deg, #00E2A1, #00E2A1), #00B1FF",
-    // width: "200px",
-    // height: "46px",
+    fontWeight: "400",
+    fontSize: "17px",
+    lineHeight: "24px",
+    letterSpacing: "-0.01em",
     color: "#fff",
   },
   settingImg: {
@@ -186,5 +278,13 @@ const makeStyles = (theme) => ({
   },
   listItem: {
     paddingTop: "20px",
+  },
+  listItemText: {
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "17px",
+    lineHeight: "24px",
+    letterSpacing: "-0.01em",
+    color: "#9197B3",
   },
 });

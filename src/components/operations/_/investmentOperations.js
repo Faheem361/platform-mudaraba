@@ -9,6 +9,7 @@ import {
   useTheme,
   Grid,
   Typography,
+  Box,
 } from "@mui/material";
 
 const columns = [

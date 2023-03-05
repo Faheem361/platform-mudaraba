@@ -10,14 +10,14 @@ import {
 
 import { Container, InputAdornment, TextField } from "@mui/material";
 import { useState } from "react";
-import { LinearProgress,Stack } from "@mui/material";
+import { LinearProgress, Stack } from "@mui/material";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
   return (
     <div role="tabpanel" hidden={value !== index} {...other}>
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      {value === index && <Box>{children}</Box>}
     </div>
   );
 }
@@ -100,56 +100,68 @@ export const CustomTabs = () => {
   };
 
   return (
-    <Box sx={{ width: "100%" }}>
-      <Box sx={sx.boxStyle}>
-        <Grid
-          container
-          spacing={2}
-          sx={{ display: "flex", justifyContent: "space-between" }}
-        >
-          <Grid item xs={12}>
-            <Typography sx={sx.investerSubHeading}>
-              Scheduled Opportunities
-            </Typography>
+    <>
+      <Box sx={{ width: "100%" }}>
+        <Box sx={sx.boxStyle}>
+          <Grid
+            container
+            spacing={2}
+            sx={{ display: "flex", justifyContent: "space-between" }}
+          >
+            <Grid item xs={12}>
+              <Typography sx={sx.investerSubHeading}>
+                Scheduled Opportunities
+              </Typography>
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              display={"flex"}
+              justifyContent={"start"}
+              alignItems={"start"}
+            >
+              <Typography sx={sx.scheduleSub}>
+                You Have more than 50 Investment Opportunities
+              </Typography>
+            </Grid>
           </Grid>
+
           <Grid
             item
             xs={12}
             display={"flex"}
             justifyContent={"start"}
             alignItems={"start"}
+            sx={{ mt: 5 }}
           >
-            <Typography sx={sx.scheduleSub}>
-              You Have more than 50 Investment Opportunities
-            </Typography>
+            <AntTabs
+              value={value}
+              onChange={handleChange}
+              aria-label="my-investment-tabs"
+            >
+              <AntTab label="Available" />
+              <AntTab label="Finished" />
+              <AntTab label="My investments" />
+            </AntTabs>
           </Grid>
-        </Grid>
-
-        <Grid
-          item
-          xs={12}
-          display={"flex"}
-          justifyContent={"start"}
-          alignItems={"start"}
-          sx={{ mt: 5 }}
-        >
-          <AntTabs
+        </Box>
+        <Grid sx={{ padding: "0px" }}>
+          <TabPanel
             value={value}
-            onChange={handleChange}
-            aria-label="my-investment-tabs"
+            index={0}
+            style={{
+              backgroundColor: "transparent",
+              padding: "0px",
+              margin: "0px",
+            }}
           >
-            <AntTab label="Available" />
-            <AntTab label="Finished" />
-            <AntTab label="My investments" />
-          </AntTabs>
+            {/* <Grid container sx={sx.boxStyle2}> */}
+            <InvestmentOperations />
+            {/* </Grid> */}
+          </TabPanel>
         </Grid>
       </Box>
-      <Box sx={sx.boxStyle}>
-        <TabPanel value={value} index={0}>
-          <InvestmentOperations />
-        </TabPanel>
-      </Box>
-    </Box>
+    </>
   );
 };
 
@@ -162,6 +174,13 @@ const makeStyles = (theme) => ({
     border: "1px solid",
     borderColor: (theme) =>
       theme.palette.mode === "dark" ? "grey.800" : "grey.300",
+    borderRadius: 2,
+    fontSize: "0.875rem",
+    fontWeight: "700",
+  },
+  boxStyle2: {
+    mb: 5,
+
     borderRadius: 2,
     fontSize: "0.875rem",
     fontWeight: "700",

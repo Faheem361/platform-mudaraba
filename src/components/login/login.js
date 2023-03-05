@@ -148,7 +148,7 @@ export function Login() {
               </Box>
               {formik.errors.password && (
                 <p
-                  class="MuiFormHelperText-root Mui-error MuiFormHelperText-sizeMedium MuiFormHelperText-contained css-1h0eig7-MuiFormHelperText-root"
+                  className="MuiFormHelperText-root Mui-error MuiFormHelperText-sizeMedium MuiFormHelperText-contained css-1h0eig7-MuiFormHelperText-root"
                   id="lastName-helper-text"
                 >
                   {formik.errors.password}
