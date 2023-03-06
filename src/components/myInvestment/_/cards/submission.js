@@ -1,20 +1,20 @@
 import React from "react";
 import { useTheme, Grid, Typography, Box, Button } from "@mui/material";
-import Tag from "../../../assets/investment/tag-2.png";
-import Task from "../../../assets/investment/task-square.png";
-import Chart from "../../../assets/investment/chart-2.png";
-import Calendar from "../../../assets/investment/calendar-2.png";
-import People from "../../../assets/investment/people.png";
-import Activity from "../../../assets/investment/Activity.png";
-import BigChart from "../../../assets/investment/Chart.png";
-import Coin from "../../../assets/investment/coin.png";
-import Percent from "../../../assets/investment/percentage-square.png";
-import Receipt from "../../../assets/investment/receipt-2.png";
-import AccountTransfer from "../../../assets/investment/card-send.png";
-import ThreeWeb from "../../../assets/investment/threeWeb.png";
-import CustomizedProgressBars from "./progress";
-import { SingleCard } from "./singleCard";
-export const DataCard3 = ({ icon, title, subTitle }) => {
+import Tag from "../../../../assets/investment/tag-2.png";
+import Task from "../../../../assets/investment/task-square.png";
+import Chart from "../../../../assets/investment/chart-2.png";
+import Calendar from "../../../../assets/investment/calendar-2.png";
+import People from "../../../../assets/investment/people.png";
+import Activity from "../../../../assets/investment/Activity.png";
+import BigChart from "../../../../assets/investment/Chart.png";
+import Coin from "../../../../assets/investment/coin.png";
+import Percent from "../../../../assets/investment/percentage-square.png";
+import Receipt from "../../../../assets/investment/receipt-2.png";
+import RecieptSearch from "../../../../assets/investment/receipt-search.png";
+import TwoWeb from "../../../../assets/investment/twoWeb.png";
+import CustomizedProgressBars from "../progress";
+import { SingleCard } from "./subCard";
+export const DataCard2 = ({ icon, title, subTitle }) => {
   const theme = useTheme();
   const sx = makeStyles(theme);
   return (
@@ -28,10 +28,10 @@ export const DataCard3 = ({ icon, title, subTitle }) => {
         sx={{ display: "flex", justifyContent: "space-between", mb: 2 }}
       >
         <Grid item xs={6} md={6} lg={6} sx={sx.flexStart}>
-          <img src={ThreeWeb} alt="" />
+          <img src={TwoWeb} alt="" />
         </Grid>
         <Grid item xs={3} md={3} lg={3} sx={sx.flexEnd}>
-          <span style={sx.timeButton}>after 1 day</span>
+          <span style={sx.timeButton}>1 day left</span>
         </Grid>
       </Grid>
 
@@ -139,8 +139,8 @@ export const DataCard3 = ({ icon, title, subTitle }) => {
           <Grid item xs={12} md={3} lg={3} sx={{ mt: 3 }}>
             <Button style={sx.loginButton}>Investment Now</Button>
             <Button style={sx.invest}>
-              <img src={AccountTransfer} style={{ marginRight: "5px" }} />
-              Account Transfer
+              <img src={RecieptSearch} />
+              Submission Memorandum
             </Button>
           </Grid>
         </Grid>
@@ -184,15 +184,15 @@ const makeStyles = (theme) => ({
     borderRadius: "10px",
   },
   loginButton: {
-    background: "rgba(46, 51, 91, 0.2)",
+    background: "#00B1FF",
     borderRadius: "10px",
     // fontSize: theme.palette.primary.fontSize,
     fontSize: "12px",
     fontWeight: theme.typography.h1.fontWeight,
     lineHeight: theme.typography.h2.lineHeight,
     height: "40px",
-    border: "1px solid #2e335b33",
-    color: "#9197B3",
+    border: "1px solid #00B1FF",
+    color: "#fff",
     width: "95%",
   },
   invest: {
@@ -200,10 +200,10 @@ const makeStyles = (theme) => ({
     fontSize: "11px",
   },
   timeButton: {
-    background: "#2E335B",
-    border: "1px solid #2E335B",
+    background: "rgba(255, 4, 120, 0.07)",
+    border: "1px solid #F2F4F8",
     borderRadius: "10px",
-    color: "#9197B3",
+    color: "#FF0076",
     padding: "10px",
     fontSize: "10px",
   },

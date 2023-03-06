@@ -12,10 +12,6 @@ import {
   Box,
 } from "@mui/material";
 
-import { DataCard } from "./cards/card";
-import { DataCard2 } from "./cards/submission";
-import { DataCard3 } from "./cards/accountTransfer";
-
 const columns = [
   { id: "orderNumber", label: "Order number", minWidth: 120 },
   { id: "Date", label: "Date", minWidth: 120 },
@@ -76,7 +72,7 @@ const rows = [
   ),
 ];
 
-export function InvestmentOperations() {
+export function Operations() {
   const theme = useTheme();
   const sx = makeStyles(theme);
   const [page, setPage] = React.useState(0);
@@ -91,35 +87,90 @@ export function InvestmentOperations() {
   // };
 
   return (
-    <Grid container>
-      <Grid item>
-        <Box sx={sx.boxStyle2}>
-          <DataCard />
-        </Box>
-      </Grid>
-      <Grid item>
-        <Box sx={sx.boxStyle2}>
-          <DataCard2 />
-        </Box>
-      </Grid>
-      <Grid item>
-        <Box sx={sx.boxStyle2}>
-          <DataCard3 />
-        </Box>
-      </Grid>
-      <Grid item>
-        <Box sx={sx.boxStyle2}>
-          <DataCard3 />
-        </Box>
-      </Grid>
-    </Grid>
+    <>
+      <Box sx={sx.boxStyle}>
+        <Grid
+          container
+          spacing={2}
+          sx={{ display: "flex", justifyContent: "space-between" }}
+        >
+          <Grid item xs={12} md={12} lg={12}>
+            <Typography sx={sx.investerHeading}>Scheduled Payments</Typography>
+            {/* <Typography sx={sx.investerSubHeading} style={{ marginTop: "15px" }}>
+            From 12 Mars until 12 Mars
+          </Typography> */}
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            md={12}
+            lg={12}
+            display={"flex"}
+            justifyContent={"start"}
+            alignItems={"start"}
+          >
+            <Typography sx={sx.investerSubHeading}>
+              From 12 Mars until 12 Mars
+            </Typography>
+            {/* <Typography sx={sx.investerSubHeading}>
+            From 12 Mars until 12 Mars
+          </Typography> */}
+          </Grid>
+        </Grid>
+        <TableContainer sx={{ maxHeight: 440 }}>
+          <Table stickyHeader aria-label="sticky table">
+            <TableHead>
+              <TableRow>
+                {columns.map((column) => (
+                  <TableCell
+                    key={column.id}
+                    align={column.align}
+                    style={{
+                      minWidth: column.minWidth,
+                      fontStyle: "normal",
+                      fontWeight: 400,
+                      fontSize: "14px",
+                      lineHeight: "18px",
+                      letterSpacing: "-0.01em",
+                      color: "#9197B3",
+                    }}
+                  >
+                    {column.label}
+                  </TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((row, index) => {
+                  return (
+                    <TableRow hover role="checkbox" tabIndex={-1} key={index}>
+                      {columns.map((column) => {
+                        const value = row[column.id];
+                        return (
+                          <TableCell key={column.id} align={column.align}>
+                            {column.format && typeof value === "number"
+                              ? column.format(value)
+                              : value}
+                          </TableCell>
+                        );
+                      })}
+                    </TableRow>
+                  );
+                })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
+    </>
   );
 }
 const makeStyles = (theme) => ({
   boxStyle: {
     p: 2,
     mb: 5,
-    bgcolor: theme.palette.primary.main,
+    bgcolor: (theme) => (theme.palette.mode === "dark" ? "#101010" : "grey.50"),
     color: (theme) => (theme.palette.mode === "dark" ? "grey.300" : "grey.800"),
     border: "1px solid",
     borderColor: (theme) =>
@@ -127,6 +178,7 @@ const makeStyles = (theme) => ({
     borderRadius: 2,
     fontSize: "0.875rem",
     fontWeight: "700",
+    width: "100%",
   },
   investerHeading: {
     fontStyle: "normal",
@@ -158,17 +210,5 @@ const makeStyles = (theme) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-  },
-  boxStyle2: {
-    p: 3,
-    mb: 5,
-    bgcolor: theme.palette.primary.main,
-    color: (theme) => (theme.palette.mode === "dark" ? "grey.300" : "grey.800"),
-    border: "1px solid",
-    borderColor: (theme) =>
-      theme.palette.mode === "dark" ? "grey.800" : "grey.300",
-    borderRadius: 2,
-    fontSize: "0.875rem",
-    fontWeight: "700",
   },
 });

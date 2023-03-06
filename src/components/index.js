@@ -4,3 +4,4 @@ export * from "./login";
 export * from "./operations";
 export * from "./myInvestment";
 export * from "./settings";
+export * from "./wallet";

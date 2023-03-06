@@ -40,7 +40,7 @@ export const Settings = () => {
             sx={{
               p: 2,
               bgcolor: (theme) =>
-                theme.palette.mode === "dark" ? "#101010" : "grey.50",
+                theme.palette.mode === "dark" ? "#ffffff" : "#ffffff",
               color: (theme) =>
                 theme.palette.mode === "dark" ? "grey.300" : "grey.800",
               border: "1px solid",
@@ -194,7 +194,7 @@ export const Settings = () => {
               mt: 5,
               mb: 5,
               bgcolor: (theme) =>
-                theme.palette.mode === "dark" ? "#101010" : "grey.50",
+                theme.palette.mode === "dark" ? "#ffffff" : "#ffffff",
               color: (theme) =>
                 theme.palette.mode === "dark" ? "grey.300" : "grey.800",
               border: "1px solid",
@@ -296,7 +296,7 @@ export const Settings = () => {
               p: 2,
               mb: 2,
               bgcolor: (theme) =>
-                theme.palette.mode === "dark" ? "#101010" : "grey.50",
+                theme.palette.mode === "dark" ? "#ffffff" : "#ffffff",
               color: (theme) =>
                 theme.palette.mode === "dark" ? "grey.300" : "grey.800",
               border: "1px solid",
@@ -430,7 +430,7 @@ export const Settings = () => {
               p: 2,
               mb: 5,
               bgcolor: (theme) =>
-                theme.palette.mode === "dark" ? "#101010" : "grey.50",
+                theme.palette.mode === "dark" ? "#ffffff" : "#ffffff",
               color: (theme) =>
                 theme.palette.mode === "dark" ? "grey.300" : "grey.800",
               border: "1px solid",

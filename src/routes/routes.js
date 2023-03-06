@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import { Dashboard } from "../pages/index";
 import {
   Layout,
   Signup,
@@ -8,6 +7,7 @@ import {
   Operations,
   MyInvestment,
   Settings,
+  Wallet,
 } from "../components";
 const PublicRoutes = () => {
   return (
@@ -35,7 +35,7 @@ const PublicRoutes = () => {
         ></Route>
         <Route
           path="/wallet"
-          element={<Layout>{/* <Operations /> */}</Layout>}
+          element={<Layout>{/* <Wallet /> */}</Layout>}
         ></Route>
         <Route
           path="/settings"

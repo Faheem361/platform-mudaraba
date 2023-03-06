@@ -169,7 +169,7 @@ const makeStyles = (theme) => ({
   boxStyle: {
     p: 2,
     mb: 5,
-    bgcolor: (theme) => (theme.palette.mode === "dark" ? "#101010" : "grey.50"),
+    bgcolor: theme.palette.primary.main,
     color: (theme) => (theme.palette.mode === "dark" ? "grey.300" : "grey.800"),
     border: "1px solid",
     borderColor: (theme) =>
