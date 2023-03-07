@@ -35,7 +35,11 @@ const PublicRoutes = () => {
         ></Route>
         <Route
           path="/wallet"
-          element={<Layout>{/* <Wallet /> */}</Layout>}
+          element={
+            <Layout>
+              <Wallet />
+            </Layout>
+          }
         ></Route>
         <Route
           path="/settings"

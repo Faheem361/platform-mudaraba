@@ -225,7 +225,7 @@ const makeStyles = (theme) => ({
     fontWeight: theme.typography.h1.fontWeight,
     lineHeight: theme.typography.h2.lineHeight,
     height: "60px",
-    border: "2px solid #949393",
+    border: `2px solid ${theme.typography.h3.color}`,
     color: theme.palette.primary.main,
     width: "80%",
   },

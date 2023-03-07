@@ -10,65 +10,95 @@ import {
   Grid,
   Typography,
   Box,
+  Chip,
 } from "@mui/material";
 
 const columns = [
-  { id: "orderNumber", label: "Order number", minWidth: 120 },
   { id: "Date", label: "Date", minWidth: 120 },
   {
-    id: "paymentDate",
-    label: "Payment Date",
-    minWidth: 120,
+    id: "referenceNumber",
+    label: "Reference Number",
+    minWidth: 170,
     // format: (value) => value.toLocaleString('en-US'),
   },
   {
     id: "theAmount",
-    label: "The Amount",
+    label: "Amount",
+    minWidth: 170,
+    // format: (value) => value.toLocaleString('en-US'),
+  },
+  {
+    id: "type",
+    label: "Operation type",
+    minWidth: 170,
+    // format: (value) => value.toLocaleString('en-US'),
+  },
+  {
+    id: "status",
+    label: "status",
+    minWidth: 150,
+    // format: (value) => value.toLocaleString('en-US'),
+  },
+  {
+    id: "note",
+    label: "note",
     minWidth: 170,
     // format: (value) => value.toLocaleString('en-US'),
   },
 ];
 
-function createData(orderNumber, Date, paymentDate, theAmount) {
-  return { orderNumber, Date, paymentDate, theAmount };
+function createData(Date, referenceNumber, theAmount, type, status, note) {
+  return { Date, referenceNumber, theAmount, type, status, note };
 }
 // Order number,due date,Payment Date, the amount
 const rows = [
   createData(
-    "APP-FUND-000192",
     "12 Mars 2022",
-    "12 Mars 2022",
-    "3,200,000.00 R.S"
+    "EXT-D01234742358",
+    "3,200,000.00 rs",
+    "Withdraw",
+    "in procedure",
+    "no note yet"
   ),
   createData(
-    "APP-FUND-000192",
     "12 Mars 2022",
-    "12 Mars 2022",
-    "3,200,000.00 R.S"
+    "EXT-D01234742358",
+    "3,200,000.00 rs",
+    "deposit",
+    "in procedure",
+    "no note yet"
   ),
   createData(
-    "APP-FUND-000192",
     "12 Mars 2022",
-    "12 Mars 2022",
-    "3,200,000.00 R.S"
+    "EXT-D01234742358",
+    "3,200,000.00 rs",
+    "Withdraw",
+    "in procedure",
+    "no note yet"
   ),
   createData(
-    "APP-FUND-000192",
     "12 Mars 2022",
-    "12 Mars 2022",
-    "3,200,000.00 R.S"
+    "EXT-D01234742358",
+    "3,200,000.00 rs",
+    "deposit",
+    "in procedure",
+    "no note yet"
   ),
   createData(
-    "APP-FUND-000192",
     "12 Mars 2022",
-    "12 Mars 2022",
-    "3,200,000.00 R.S"
+    "EXT-D01234742358",
+    "3,200,000.00 rs",
+    "Withdraw",
+    "in procedure",
+    "no note yet"
   ),
   createData(
-    "APP-FUND-000192",
     "12 Mars 2022",
-    "12 Mars 2022",
-    "3,200,000.00 R.S"
+    "EXT-D01234742358",
+    "3,200,000.00 rs",
+    "Withdraw",
+    "in procedure",
+    "no note yet"
   ),
 ];
 
@@ -150,9 +180,25 @@ export function Operations() {
                         const value = row[column.id];
                         return (
                           <TableCell key={column.id} align={column.align}>
-                            {column.format && typeof value === "number"
-                              ? column.format(value)
-                              : value}
+                            {column.id == "type" ? (
+                              <>
+                                {index % 2 == 0 ? (
+                                  <>
+                                    <Chip label="Withdraw" sx={sx.withdraw} />
+                                  </>
+                                ) : (
+                                  <>
+                                    <Chip label="deposit" sx={sx.deposit} />
+                                  </>
+                                )}
+                              </>
+                            ) : (
+                              <>
+                                {column.format && typeof value === "number"
+                                  ? column.format(value)
+                                  : value}
+                              </>
+                            )}
                           </TableCell>
                         );
                       })}
@@ -170,7 +216,7 @@ const makeStyles = (theme) => ({
   boxStyle: {
     p: 2,
     mb: 5,
-    bgcolor: (theme) => (theme.palette.mode === "dark" ? "#101010" : "grey.50"),
+    bgcolor: theme.palette.primary.main,
     color: (theme) => (theme.palette.mode === "dark" ? "grey.300" : "grey.800"),
     border: "1px solid",
     borderColor: (theme) =>
@@ -210,5 +256,23 @@ const makeStyles = (theme) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+  },
+  withdraw: {
+    boxShadow: "#ffe8f3",
+    backgroundColor: "#ffe8f3",
+    width: "90%",
+    color: "#ff0076",
+    fontSize: "14px",
+    fontWeight: "600",
+    borderRadius: "8px",
+  },
+  deposit: {
+    boxShadow: "#e6fcf4",
+    backgroundColor: "#e6fcf4",
+    width: "90%",
+    color: "#1ce5ab",
+    fontSize: "14px",
+    fontWeight: "600",
+    borderRadius: "8px",
   },
 });

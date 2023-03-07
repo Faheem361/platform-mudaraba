@@ -1,65 +1,35 @@
 import React from "react";
 import { Grid, useTheme } from "@mui/material";
-import { AccountCard, ATMCard, BalanceCard, Operations } from "./_";
-import Card from "../../assets/wallet/card.png";
-export const Wallet = () => {
+import EmptyWallet from "../../../assets/wallet/empty-wallet-tick.png";
+export const BalanceCard = () => {
   const theme = useTheme();
   const sx = makeStyles(theme);
   return (
-    <div className="container dashboard-container ">
-      <Grid container sx={sx.flexStart} pl={5}>
-        <Grid item xs={12}>
-          <h1 style={sx.investerHeading}>Your Wallet</h1>
+    <Grid item xs={12} md={6} lg={4}>
+      <Grid container sx={sx.boxStyle}>
+        <Grid item xs={12} display={"flex"} sx={{ mb: 1 }}>
+          <img src={EmptyWallet} alt="" style={sx.imgStyle} />
+          <span style={sx.cardTitle}>total balance</span>
         </Grid>
-        <Grid item xs={12}>
-          <h6 style={sx.investerSubHeading}>Your Balance and All Operations</h6>
+        <Grid item xs={12} display={"flex"} sx={{ mt: 3 }}>
+          <span style={sx.amount}>1,000,500</span>
+          <span style={sx.currency}>rs</span>
         </Grid>
-      </Grid>
-      <Grid container sx={sx.flexStart} pl={3} spacing={2}>
-        <BalanceCard />
-        <AccountCard />
-        <ATMCard />
-      </Grid>
-      <Grid container sx={sx.flexCenter} style={{ padding: "1.5rem" }}>
-        <Grid item xs={12} md={12} lg={12}>
-          <Grid container>
-            <Operations />
-          </Grid>
+        <Grid item xs={12} sx={{ mt: 4 }} display={"flex"}>
+          <button style={sx.btnAmount}>Add Balance</button>
         </Grid>
       </Grid>
-    </div>
+    </Grid>
   );
 };
 
 const makeStyles = (theme) => ({
-  investerHeading: {
-    fontStyle: "normal",
-    fontWeight: "600",
-    fontSize: "23px",
-    lineHeight: "29px",
-    display: "flex",
-    alignItems: "flex-end",
-    letterSpacing: "-0.02em",
-    color: "#2e335b",
-  },
-  investerSubHeading: {
-    fontStyle: "normal",
-    fontWeight: "600",
-    fontSize: "17px",
-    lineHeight: "29px",
-    display: "flex",
-    alignItems: "flex-end",
-    letterSpacing: "-0.02em",
-    color: "#2e335b",
-  },
   boxStyle: {
-    p: 3,
+    p: 2,
     mb: 5,
     bgcolor: theme.palette.primary.main,
     color: (theme) => (theme.palette.mode === "dark" ? "grey.300" : "grey.800"),
-    border: "1px solid",
-    borderColor: (theme) =>
-      theme.palette.mode === "dark" ? "grey.800" : "grey.300",
+    border: `1px solid ${theme.palette.primary.main}`,
     borderRadius: 2,
     fontSize: "0.875rem",
     fontWeight: "700",

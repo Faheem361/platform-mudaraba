@@ -304,7 +304,7 @@ const makeStyles = (theme) => ({
     fontSize: "16px",
     fontWeight: 700,
     height: "60px",
-    border: "2px solid #949393",
+    border: `2px solid ${theme.typography.h3.color}`,
     color: "#fff",
     width: "80%",
     textTransform: "unset",
