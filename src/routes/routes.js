@@ -8,6 +8,7 @@ import {
   MyInvestment,
   Settings,
   Wallet,
+  Dashboard,
 } from "../components";
 const PublicRoutes = () => {
   return (
@@ -15,7 +16,11 @@ const PublicRoutes = () => {
       <Routes>
         <Route
           path="/dashboard"
-          element={<Layout>{/* <Dashboard /> */}</Layout>}
+          element={
+            <Layout>
+              <Dashboard />
+            </Layout>
+          }
         ></Route>
         <Route
           path="/my-investment"
