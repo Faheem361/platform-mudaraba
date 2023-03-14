@@ -8,10 +8,44 @@ export function CircularProgressCard() {
   return (
     <Grid container sx={sx.boxStyle}>
       <Grid item xs={12} sx={sx.flexStart}>
-        <span style={sx.cardTitle}>Profits</span>
+        <span style={sx.investerHeading}>Profits</span>
       </Grid>
       <Grid item xs={12}>
         <Circular />
+      </Grid>
+      <Grid
+        item
+        xs={12}
+        md={6}
+        lg={6}
+        mt={5}
+        sx={{ p: 2, borderLeft: "2px solid #00B1FF" }}
+      >
+        <Grid container spacing={0}>
+          <Grid item xs={12} sx={sx.flexStart}>
+            <span style={sx.amount}>$1,500</span>
+          </Grid>
+          <Grid item xs={12} sx={sx.flexStart}>
+            <span style={sx.cardTitle}>total expected profit value</span>
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid
+        item
+        xs={12}
+        md={6}
+        lg={6}
+        mt={5}
+        sx={{ p: 2, borderLeft: "2px solid #00B1FF" }}
+      >
+        <Grid container>
+          <Grid item xs={12} sx={sx.flexStart}>
+            <span style={sx.amount}>$1,500</span>
+          </Grid>
+          <Grid item xs={12} sx={sx.flexStart}>
+            <span style={sx.cardTitle}>total value of the actual profit</span>
+          </Grid>
+        </Grid>
       </Grid>
     </Grid>
   );
@@ -48,26 +82,27 @@ const makeStyles = (theme) => ({
     fontSize: "14px",
     lineHeight: "40px",
     display: "flex",
-    alignItems: " flex-end",
+    alignItems: "flex-end",
     letterSpacing: "-0.02em",
     color: "#979797",
     marginLeft: "5px",
   },
   amount: {
     fontWeight: "600",
+    fontStyle: "Italic",
     fontSize: "25px",
     lineHeight: "24px",
     display: "flex",
-    alignItems: " flex-end",
+    alignItems: "flex-end",
     letterSpacing: "-0.02em",
     color: "#2E335B",
   },
   cardTitle: {
     fontWeight: "500",
-    fontSize: "16px",
-    lineHeight: "20px",
+    fontSize: "13px",
     display: "flex",
-    alignItems: " flex-end",
+    alignItems: "start",
+    textAlign: "start",
     letterSpacing: "-0.02em",
     color: "#2E335B",
   },
@@ -78,5 +113,15 @@ const makeStyles = (theme) => ({
     width: "24px",
     height: "24px",
     marginRight: "5px",
+  },
+  investerHeading: {
+    fontStyle: "normal",
+    fontWeight: "600",
+    fontSize: "23px",
+    lineHeight: "29px",
+    display: "flex",
+    alignItems: "flex-end",
+    letterSpacing: "-0.02em",
+    color: " #2e335b",
   },
 });

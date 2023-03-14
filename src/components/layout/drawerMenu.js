@@ -8,10 +8,6 @@ import {
   ListItem,
   ListItemButton,
   ListItemIcon,
-  ListItemText,
-  Avatar,
-  Button,
-  Grid,
   Typography,
 } from "@mui/material";
 import WalletMoney from "../../assets/wallet-money.png";
@@ -21,6 +17,7 @@ import StatusUp from "../../assets/status-up.png";
 import Settings from "../../assets/setting.png";
 import logoText from "../../assets/mudaraba-logotext.png";
 import logo from "../../assets/mudaraba-logo.png";
+import Tickets from "../../assets/ticket.png";
 import { useLocation, useNavigate } from "react-router-dom";
 import { styled, useTheme } from "@mui/material/styles";
 import { DataCard } from "../settings/_";
@@ -59,11 +56,14 @@ export default function DrawerMenu({ open, handleDrawerClose }) {
         case "/wallet":
           setValue(2);
           break;
-        case "/operations":
+        case "/tickets":
           setValue(3);
           break;
-        case "/settings":
+        case "/operations":
           setValue(4);
+          break;
+        case "/settings":
+          setValue(5);
           break;
         default:
           setValue(0);
@@ -167,6 +167,23 @@ export default function DrawerMenu({ open, handleDrawerClose }) {
         <ListItem disablePadding sx={sx.listItem}>
           <ListItemButton
             sx={value == 3 ? sx.lightButton : ""}
+            onClick={() => handlePageSwitch("/tickets")}
+          >
+            <ListItemIcon>
+              <img src={Tickets} alt="" />
+            </ListItemIcon>
+
+            <Typography
+              style={value == 3 ? sx.lightButton : sx.listItemText}
+              variant="body2"
+            >
+              Tickets
+            </Typography>
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding sx={sx.listItem}>
+          <ListItemButton
+            sx={value == 4 ? sx.lightButton : ""}
             onClick={() => handlePageSwitch("/operations")}
           >
             <ListItemIcon>
@@ -174,7 +191,7 @@ export default function DrawerMenu({ open, handleDrawerClose }) {
             </ListItemIcon>
 
             <Typography
-              style={value == 3 ? sx.lightButton : sx.listItemText}
+              style={value == 4 ? sx.lightButton : sx.listItemText}
               variant="body2"
             >
               Operations
@@ -183,7 +200,7 @@ export default function DrawerMenu({ open, handleDrawerClose }) {
         </ListItem>
         <ListItem disablePadding sx={sx.listItem}>
           <ListItemButton
-            sx={value == 4 ? sx.lightButton : ""}
+            sx={value == 5 ? sx.lightButton : ""}
             onClick={() => handlePageSwitch("/settings")}
           >
             <ListItemIcon>
@@ -191,7 +208,7 @@ export default function DrawerMenu({ open, handleDrawerClose }) {
             </ListItemIcon>
 
             <Typography
-              style={value == 4 ? sx.lightButton : sx.listItemText}
+              style={value == 5 ? sx.lightButton : sx.listItemText}
               variant="body2"
             >
               Settings
@@ -199,7 +216,7 @@ export default function DrawerMenu({ open, handleDrawerClose }) {
           </ListItemButton>
         </ListItem>
       </List>
-      {/* <Grid container>
+      {/* <Grid container> 
         <Grid item xs={12} md={8} lg={8}>
           <Grid container spacing={2}>
             <Grid

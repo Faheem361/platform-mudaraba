@@ -20,20 +20,20 @@ export const ChangePassword = (props) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
     setOpen(false);
-    props.setATMShowModel(false);
+    props.setChangePasswordModel(false);
   };
   const theme = useTheme();
   const sx = makeStyles(theme);
   const NationalAddress = Yup.object().shape({
-    iban: Yup.string().min(0).required("Required"),
-    abn: Yup.string().min(0).required("Required"),
-    cleintName: Yup.string().min(0).required("Required"),
+    password: Yup.string().min(0).required("Required"),
+    newPassword: Yup.string().min(0).required("Required"),
+    againNewPassword: Yup.string().min(0).required("Required"),
   });
   const formik = useFormik({
     initialValues: {
-      iban: "",
-      abn: "",
-      cleintName: "",
+      password: "",
+      newPassword: "",
+      againNewPassword: "",
     },
     validationSchema: NationalAddress,
 
@@ -95,13 +95,14 @@ export const ChangePassword = (props) => {
                 <CssTextField
                   variant="outlined"
                   fullWidth
-                  name="iban"
-                  placeholder="IBAN"
+                  type="password"
+                  name="password"
+                  placeholder="Old password"
                   style={{ marginTop: "1rem" }}
-                  value={formik.values.iban}
+                  value={formik.values.password}
                   onChange={formik.handleChange}
-                  helperText={formik.errors.iban}
-                  error={formik.errors.iban}
+                  helperText={formik.errors.password}
+                  error={formik.errors.password}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -121,12 +122,13 @@ export const ChangePassword = (props) => {
                 <CssTextField
                   variant="outlined"
                   fullWidth
-                  name="abn"
-                  placeholder="ABN"
-                  value={formik.values.abn}
+                  type="password"
+                  name="newPassword"
+                  placeholder="New Password"
+                  value={formik.values.newPassword}
                   onChange={formik.handleChange}
-                  helperText={formik.errors.abn}
-                  error={formik.errors.abn}
+                  helperText={formik.errors.newPassword}
+                  error={formik.errors.newPassword}
                   style={{ marginTop: "1rem" }}
                 />
               </Grid>
@@ -146,12 +148,13 @@ export const ChangePassword = (props) => {
                 <CssTextField
                   variant="outlined"
                   fullWidth
-                  name="cleintName"
-                  placeholder="Client Name"
-                  value={formik.values.cleintName}
+                  type="password"
+                  name="againNewPassword"
+                  placeholder="New Password Again"
+                  value={formik.values.againNewPassword}
                   onChange={formik.handleChange}
-                  helperText={formik.errors.cleintName}
-                  error={formik.errors.cleintName}
+                  helperText={formik.errors.againNewPassword}
+                  error={formik.errors.againNewPassword}
                   style={{ marginTop: "1rem" }}
                 />
               </Grid>

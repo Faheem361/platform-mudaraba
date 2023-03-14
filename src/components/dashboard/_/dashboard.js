@@ -53,76 +53,11 @@ function createData(projectName, dateOfMaturity, theAmount, status) {
 }
 // Order number,due date,Payment Date, the amount
 const rows = [
-  createData(
-    "Saudi Industries Company",
-    "12 MAR 2022",
-    "10,000,000.00 rs",
-    "Scheduled"
-  ),
-  createData(
-    "Saudi Industries Company",
-    "12 MAR 2022",
-    "10,000,000.00 rs",
-    "Scheduled"
-  ),
-  createData(
-    "Saudi Industries Company",
-    "12 MAR 2022",
-    "10,000,000.00 rs",
-    "Scheduled"
-  ),
-  createData(
-    "Saudi Industries Company",
-    "12 MAR 2022",
-    "10,000,000.00 rs",
-    "Scheduled"
-  ),
-  createData(
-    "Saudi Industries Company",
-    "12 MAR 2022",
-    "10,000,000.00 rs",
-    "Scheduled"
-  ),
-  // createData(
-  //   "12 Mars 2022",
-  //   "EXT-D01234742358",
-  //   "3,200,000.00 rs",
-  //   "deposit",
-  //   "in procedure",
-  //   "no note yet"
-  // ),
-  // createData(
-  //   "12 Mars 2022",
-  //   "EXT-D01234742358",
-  //   "3,200,000.00 rs",
-  //   "Withdraw",
-  //   "in procedure",
-  //   "no note yet"
-  // ),
-  // createData(
-  //   "12 Mars 2022",
-  //   "EXT-D01234742358",
-  //   "3,200,000.00 rs",
-  //   "deposit",
-  //   "in procedure",
-  //   "no note yet"
-  // ),
-  // createData(
-  //   "12 Mars 2022",
-  //   "EXT-D01234742358",
-  //   "3,200,000.00 rs",
-  //   "Withdraw",
-  //   "in procedure",
-  //   "no note yet"
-  // ),
-  // createData(
-  //   "12 Mars 2022",
-  //   "EXT-D01234742358",
-  //   "3,200,000.00 rs",
-  //   "Withdraw",
-  //   "in procedure",
-  //   "no note yet"
-  // ),
+  createData("Saudi Industries Company", "12 MAR 2022", "10,000,000.00 rs"),
+  createData("Saudi Industries Company", "12 MAR 2022", "10,000,000.00 rs"),
+  createData("Saudi Industries Company", "12 MAR 2022", "10,000,000.00 rs"),
+  createData("Saudi Industries Company", "12 MAR 2022", "10,000,000.00 rs"),
+  createData("Saudi Industries Company", "12 MAR 2022", "10,000,000.00 rs"),
 ];
 
 export function Operations() {
@@ -149,9 +84,6 @@ export function Operations() {
         >
           <Grid item xs={12} md={12} lg={8}>
             <Typography sx={sx.investerHeading}>Scheduled Payments</Typography>
-            {/* <Typography sx={sx.investerSubHeading} style={{ marginTop: "15px" }}>
-            From 12 Mars until 12 Mars
-          </Typography> */}
           </Grid>
           <Grid
             item
@@ -165,9 +97,6 @@ export function Operations() {
             <Typography sx={sx.investerSubHeading}>
               From 12 Mars until 12 Mars
             </Typography>
-            {/* <Typography sx={sx.investerSubHeading}>
-            From 12 Mars until 12 Mars
-          </Typography> */}
           </Grid>
         </Grid>
         <TableContainer sx={{ maxHeight: 440 }}>
@@ -203,17 +132,9 @@ export function Operations() {
                         const value = row[column.id];
                         return (
                           <TableCell key={column.id} align={column.align}>
-                            {column.id == "type" ? (
+                            {column.id == "status" ? (
                               <>
-                                {index % 2 == 0 ? (
-                                  <>
-                                    <Chip label="Withdraw" sx={sx.withdraw} />
-                                  </>
-                                ) : (
-                                  <>
-                                    <Chip label="deposit" sx={sx.deposit} />
-                                  </>
-                                )}
+                                <Chip label="Scheduled" sx={sx.process} />
                               </>
                             ) : (
                               <>
@@ -297,5 +218,11 @@ const makeStyles = (theme) => ({
     fontSize: "14px",
     fontWeight: "600",
     borderRadius: "8px",
+  },
+  process: {
+    background: "linear-gradient(0deg, #E6FCF4, #E6FCF4), #00B1FF",
+    borderRadius: "4px",
+    color: "#00B1FF",
+    padding: "4px 12px",
   },
 });

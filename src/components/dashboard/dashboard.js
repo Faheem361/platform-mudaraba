@@ -1,11 +1,15 @@
 import React from "react";
 import { Grid, useTheme } from "@mui/material";
-import { CircularProgressCard, InvestmentDetail, Operations } from "./_";
+import {
+  CircularProgressCard,
+  InvestmentDetail,
+  Operations,
+  DataCard,
+} from "./_";
 import Money from "../../assets/dashboard/money-send.png";
 import ChartSquare from "../../assets/dashboard/chart-square.png";
 import Ticket from "../../assets/dashboard/ticket-2.png";
 import Category from "../../assets/dashboard/category-2.png";
-import { DataCard } from "./_/card";
 
 export const Dashboard = () => {
   const theme = useTheme();
@@ -55,14 +59,14 @@ export const Dashboard = () => {
         </Grid>
       </Grid>
 
-      <Grid container sx={sx.flexCenter} style={{ padding: "1.5rem" }}>
+      <Grid container style={{ padding: "1.5rem" }}>
         <Grid item xs={12} md={8} lg={8}>
           <Grid container mb={5}>
             <Operations />
           </Grid>
         </Grid>
         <Grid item xs={12} md={4} lg={4}>
-          {/* <CircularProgressCard /> */}
+          <CircularProgressCard />
         </Grid>
         <Grid container sx={sx.flexStart}>
           <Grid item xs={12} md={12} lg={12}>

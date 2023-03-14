@@ -1,6 +1,5 @@
 import React from "react";
 import { Avatar, Grid, useTheme } from "@mui/material";
-import EmptyWallet from "../../../assets/wallet/empty-wallet-tick.png";
 
 export const DataCard = ({ icon, title, amount, currency }) => {
   const theme = useTheme();

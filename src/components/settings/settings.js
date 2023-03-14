@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Avatar, Grid } from "@mui/material";
+import { Box, Avatar, Grid, useTheme } from "@mui/material";
 import Phone from "../../assets/phone.png";
 import SMS from "../../assets/sms.png";
 import Global from "../../assets/global.png";
@@ -18,20 +18,24 @@ import Layers from "../../assets/layer.png";
 import Routing from "../../assets/routing.png";
 import ATMCard from "../../assets/Card.png";
 import Download from "../../assets/download.png";
-import { DataCard } from "./_";
+import { ChangePassword, DataCard } from "./_";
 import { Model, ATMmodel } from "./_";
 import "./settings.css";
 
 export const Settings = () => {
   const [showModel, setShowModel] = useState(false);
   const [showATMModel, setATMShowModel] = useState(false);
-  const setModel = (props) => {
-    setShowModel(props);
-  };
+  const [showPasswordModel, setPasswordModel] = useState(false);
+  const theme = useTheme();
+  const sx = makeStyles(theme);
+
   return (
     <div className="container dashboard-container ">
       {showModel && <Model setShowModel={setShowModel} />}
       {showATMModel && <ATMmodel setATMShowModel={setATMShowModel} />}
+      {showPasswordModel && (
+        <ChangePassword setPasswordModel={setPasswordModel} />
+      )}
       <h1 className="dashboard-heading">Your Profile Data and Edit</h1>
       <Grid container>
         <Grid item xs={12} md={12} lg={7}>
@@ -43,9 +47,6 @@ export const Settings = () => {
                 theme.palette.mode === "dark" ? "#ffffff" : "#ffffff",
               color: (theme) =>
                 theme.palette.mode === "dark" ? "grey.300" : "grey.800",
-              border: "1px solid",
-              borderColor: (theme) =>
-                theme.palette.mode === "dark" ? "grey.800" : "grey.300",
               borderRadius: 2,
               fontSize: "0.875rem",
               fontWeight: "700",
@@ -171,19 +172,14 @@ export const Settings = () => {
                   subTitle={"Password"}
                 />
               </Grid>
-              <Grid
-                item
-                xs={12}
-                md={6}
-                lg={4}
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <span className="change-password">Change Your Password</span>
-                <img src={RightArrow} alt="" />
+              <Grid item xs={12} md={6} lg={4} sx={sx.flexCenter}>
+                <button
+                  style={sx.btnPassword}
+                  onClick={() => setPasswordModel(true)}
+                >
+                  <span className="change-password">Change Your Password</span>
+                  <img src={RightArrow} alt="" />
+                </button>
               </Grid>
             </Grid>
           </Box>
@@ -197,9 +193,6 @@ export const Settings = () => {
                 theme.palette.mode === "dark" ? "#ffffff" : "#ffffff",
               color: (theme) =>
                 theme.palette.mode === "dark" ? "grey.300" : "grey.800",
-              border: "1px solid",
-              borderColor: (theme) =>
-                theme.palette.mode === "dark" ? "grey.800" : "grey.300",
               borderRadius: 2,
               fontSize: "0.875rem",
               fontWeight: "700",
@@ -222,20 +215,11 @@ export const Settings = () => {
                 <span className="title">National address</span>
               </Grid>
 
-              <Grid
-                item
-                xs={4}
-                sx={{
-                  display: "flex",
-                  justifyContent: "end",
-                  alignItems: "center",
-                  // mr: 3,
-                }}
-              >
+              <Grid item xs={4} sx={sx.flexEnd}>
                 <span
                   className="change-password"
                   style={{ cursor: "pointer" }}
-                  onClick={() => setModel(true)}
+                  onClick={() => setShowModel(true)}
                 >
                   Edit Data
                 </span>
@@ -299,9 +283,6 @@ export const Settings = () => {
                 theme.palette.mode === "dark" ? "#ffffff" : "#ffffff",
               color: (theme) =>
                 theme.palette.mode === "dark" ? "grey.300" : "grey.800",
-              border: "1px solid",
-              borderColor: (theme) =>
-                theme.palette.mode === "dark" ? "grey.800" : "grey.300",
               borderRadius: 2,
               fontSize: "0.875rem",
               fontWeight: "700",
@@ -324,16 +305,7 @@ export const Settings = () => {
                 <span className="title">Bank Account</span>
               </Grid>
 
-              <Grid
-                item
-                xs={4}
-                sx={{
-                  display: "flex",
-                  justifyContent: "end",
-                  alignItems: "center",
-                  // mr: 3,
-                }}
-              >
+              <Grid item xs={4} sx={sx.flexEnd}>
                 <span
                   className="change-password"
                   style={{ cursor: "pointer" }}
@@ -350,26 +322,10 @@ export const Settings = () => {
               </Grid>
               <Grid item xs={12} md={12} lg={8}>
                 <Grid container sx={{ ml: 1 }}>
-                  <Grid
-                    item
-                    xs={12}
-                    sx={{
-                      display: "flex",
-                      justifyContent: "start",
-                      alignItems: "start",
-                    }}
-                  >
+                  <Grid item xs={12} sx={sx.flexStart}>
                     <span className="userSubTitle">IBAN</span>
                   </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    sx={{
-                      display: "flex",
-                      justifyContent: "start",
-                      alignItems: "start",
-                    }}
-                  >
+                  <Grid item xs={12} sx={sx.flexStart}>
                     <span className="userTitle">SA0380000203608016117728</span>
                   </Grid>
                 </Grid>
@@ -385,15 +341,7 @@ export const Settings = () => {
                   >
                     <span className="userSubTitle">Clint name</span>
                   </Grid>
-                  <Grid
-                    item
-                    xs={6}
-                    sx={{
-                      display: "flex",
-                      justifyContent: "end",
-                      alignItems: "center",
-                    }}
-                  >
+                  <Grid item xs={6} sx={sx.flexEnd}>
                     <span className="userSubTitle">Bank name</span>
                   </Grid>
                 </Grid>
@@ -409,15 +357,7 @@ export const Settings = () => {
                   >
                     <span>AKRAM - - ELKALLAS</span>
                   </Grid>
-                  <Grid
-                    item
-                    xs={4}
-                    sx={{
-                      display: "flex",
-                      justifyContent: "end",
-                      alignItems: "center",
-                    }}
-                  >
+                  <Grid item xs={4} sx={sx.flexEnd}>
                     <span>ANB</span>
                   </Grid>
                 </Grid>
@@ -433,9 +373,6 @@ export const Settings = () => {
                 theme.palette.mode === "dark" ? "#ffffff" : "#ffffff",
               color: (theme) =>
                 theme.palette.mode === "dark" ? "grey.300" : "grey.800",
-              border: "1px solid",
-              borderColor: (theme) =>
-                theme.palette.mode === "dark" ? "grey.800" : "grey.300",
               borderRadius: 2,
               fontSize: "0.875rem",
               fontWeight: "700",
@@ -448,39 +385,15 @@ export const Settings = () => {
                 mt: 1,
               }}
             >
-              <Grid
-                item
-                xs={12}
-                sx={{
-                  display: "flex",
-                  justifyContent: "start",
-                  alignItems: "start",
-                }}
-              >
+              <Grid item xs={12} sx={sx.flexStart}>
                 <span className="userTitle">Investor Agreement</span>
               </Grid>
-              <Grid
-                item
-                xs={12}
-                sx={{
-                  display: "flex",
-                  justifyContent: "start",
-                  alignItems: "start",
-                }}
-              >
+              <Grid item xs={12} sx={sx.flexStart}>
                 <span className="userSubTitle">
                   (Opening an Investment Account)
                 </span>
               </Grid>
-              <Grid
-                item
-                xs={12}
-                sx={{
-                  display: "flex",
-                  justifyContent: "start",
-                  alignItems: "start",
-                }}
-              >
+              <Grid item xs={12} sx={sx.flexStart}>
                 <p className="agreement-para">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Egestas interdum mi nunc quam tellus sagittis non sagittis.
@@ -525,3 +438,24 @@ export const Settings = () => {
     </div>
   );
 };
+const makeStyles = (theme) => ({
+  flexCenter: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  flexStart: {
+    display: "flex",
+    justifyContent: "start",
+    alignItems: "start",
+  },
+  flexEnd: {
+    display: "flex",
+    justifyContent: "end",
+    alignItems: "center",
+  },
+  btnPassword: {
+    border: "none",
+    background: "transparent",
+  },
+});

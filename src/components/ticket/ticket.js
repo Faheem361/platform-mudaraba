@@ -1,7 +1,6 @@
 import React from "react";
 import { Grid, useTheme } from "@mui/material";
-import { AccountCard, ATMCard, BalanceCard, Operations } from "./_";
-import Card from "../../assets/wallet/card.png";
+import { FilterCard, TicketsTable } from "./_";
 export const Ticket = () => {
   const theme = useTheme();
   const sx = makeStyles(theme);
@@ -16,14 +15,12 @@ export const Ticket = () => {
         </Grid>
       </Grid>
       <Grid container sx={sx.flexStart} pl={3} spacing={2}>
-        <BalanceCard />
-        {/* <AccountCard />
-        <ATMCard /> */}
+        <FilterCard />
       </Grid>
       <Grid container sx={sx.flexCenter} style={{ padding: "1.5rem" }}>
         <Grid item xs={12} md={12} lg={12}>
           <Grid container>
-            <Operations />
+            <TicketsTable />
           </Grid>
         </Grid>
       </Grid>

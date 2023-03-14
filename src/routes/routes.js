@@ -9,6 +9,7 @@ import {
   Settings,
   Wallet,
   Dashboard,
+  Ticket,
 } from "../components";
 const PublicRoutes = () => {
   return (
@@ -43,6 +44,14 @@ const PublicRoutes = () => {
           element={
             <Layout>
               <Wallet />
+            </Layout>
+          }
+        ></Route>
+        <Route
+          path="/tickets"
+          element={
+            <Layout>
+              <Ticket />
             </Layout>
           }
         ></Route>
