@@ -128,7 +128,6 @@ export function TicketsTable() {
                                   <>
                                     <Chip label="Closed" sx={sx.close} />
 
-                                    {/* <Chip label="deposit" sx={sx.deposit} /> */}
                                   </>
                                 )}
                               </>
