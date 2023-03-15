@@ -7,11 +7,10 @@ import {
   TableContainer,
   TableHead,
   useTheme,
-  Grid,
-  Typography,
   Box,
   Chip,
 } from "@mui/material";
+import doc from "../../../assets/doc.png";
 const columns = [
   { id: "ticketNo", label: "Ticket No", minWidth: 120 },
   {
@@ -51,7 +50,6 @@ const rows = [
     "43434365fg",
     "12-04-2023",
     "document",
-
     "ABC3233",
     "IN Process",
     "View"
@@ -59,7 +57,6 @@ const rows = [
   createData(
     "43434365fg",
     "12-04-2023",
-
     "document",
     "ABC3233",
     "IN Process",
@@ -101,6 +98,7 @@ export function TicketsTable() {
                       letterSpacing: "-0.01em",
                       color: "black",
                       background: "#fafbff",
+                      textAlign: "center",
                     }}
                   >
                     {column.label}
@@ -117,20 +115,31 @@ export function TicketsTable() {
                       {columns.map((column) => {
                         const value = row[column.id];
                         return (
-                          <TableCell key={column.id} align={column.align}>
-                            {column.id == "theStatus" ? (
+                          <TableCell
+                            key={column.id}
+                            align={column.align}
+                            style={{
+                              textAlign: "center",
+                            }}
+                          >
+                            {column.id == "document" ? (
                               <>
-                                {index % 2 == 0 ? (
+                                <img src={doc} alt="" />
+                              </>
+                            ) : column.id == "theStatus" ? (
+                              <>
+                                {value == "IN Process" ? (
                                   <>
                                     <Chip label="In Process" sx={sx.process} />
                                   </>
                                 ) : (
                                   <>
                                     <Chip label="Closed" sx={sx.close} />
-
                                   </>
                                 )}
                               </>
+                            ) : column.id == "view" ? (
+                              <button style={sx.btnView}>View</button>
                             ) : (
                               <>
                                 {column.format && typeof value === "number"
@@ -210,5 +219,12 @@ const makeStyles = (theme) => ({
     fontSize: "14px",
     fontWeight: "600",
     borderRadius: "8px",
+  },
+  btnView: {
+    padding: "8px 20px",
+    background: "linear-gradient(0deg, #CECED0, #CECED0), #00B1FF",
+    borderRadius: "8px",
+    color: "#fff",
+    border: "none",
   },
 });
