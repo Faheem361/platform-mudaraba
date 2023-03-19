@@ -25,7 +25,7 @@ export const Dashboard = () => {
         </Grid>
       </Grid>
       <Grid sx={sx.flexStart}>
-        <Grid container item lg={3} sx={sx.boxStyle} mt={2} ml={3} spacing={1}>
+        <Grid container item lg={3} sx={sx.boxStyle} mt={2} ml={2}>
           <DataCard
             icon={Money}
             title={"Total investment"}
@@ -33,7 +33,7 @@ export const Dashboard = () => {
             currency={"R.S"}
           />
         </Grid>
-        <Grid container item lg={3} sx={sx.boxStyle} mt={2} ml={3} spacing={1}>
+        <Grid container item lg={3} sx={sx.boxStyle} mt={2} ml={2}>
           <DataCard
             icon={ChartSquare}
             title={"Number of investment"}
@@ -41,7 +41,7 @@ export const Dashboard = () => {
             currency={"investment"}
           />
         </Grid>
-        <Grid container item lg={3} sx={sx.boxStyle} mt={2} ml={3} spacing={1}>
+        <Grid container item lg={3} sx={sx.boxStyle} mt={2} ml={2}>
           <DataCard
             icon={Ticket}
             title={"Total instruments"}
@@ -49,7 +49,7 @@ export const Dashboard = () => {
             currency={"stampings"}
           />
         </Grid>
-        <Grid container item lg={3} sx={sx.boxStyle} mt={2} ml={3} spacing={1}>
+        <Grid container item lg={3} sx={sx.boxStyle} mt={2} ml={2}>
           <DataCard
             icon={Category}
             title={"Number of projects"}
@@ -59,7 +59,7 @@ export const Dashboard = () => {
         </Grid>
       </Grid>
 
-      <Grid container style={{ padding: "1.5rem" }}>
+      <Grid container style={{ padding: "1.2rem" }}>
         <Grid item xs={12} md={8} lg={8}>
           <Grid container mb={5}>
             <Operations />

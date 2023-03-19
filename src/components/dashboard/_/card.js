@@ -6,7 +6,7 @@ export const DataCard = ({ icon, title, amount, currency }) => {
   const sx = makeStyles(theme);
   return (
     <Grid container spacing={1} sx={sx.flexCenter}>
-      <Grid item sx={sx.imgContainer} style={{ width: "60px" }}>
+      <Grid item sx={sx.imgContainer}>
         <img src={icon} style={sx.imgStyle} />
       </Grid>
       <Grid
@@ -81,8 +81,8 @@ const makeStyles = (theme) => ({
     alignItems: "center",
     background: "#E6FCF4",
     borderRadius: "16px",
-    width: " 66px",
-    height: "65px",
+    width: "50px",
+    height: "50px",
     left: "calc(50% - 66px/2 - 293px)",
     top: "calc(50% - 65px/2 - 0.5px)",
   },
